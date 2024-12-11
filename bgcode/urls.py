@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include("bgcode.urls"), name='bgcode-urls'),
+    path('', include("starplanner.urls"), name='starplanner-urls'),
     path('admin/', admin.site.urls),
 ]
