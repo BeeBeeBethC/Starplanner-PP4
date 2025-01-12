@@ -1,23 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
-
-STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
-class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="blog_posts"
-    )
-    content = models.TextField()
+class Task(models.Model):
+    name = models.CharField(max_length=100)
+    task_id = models.AutoField(primary_key=True)
+    user_id = models.CharField(max_length=100, unique=True)
+    priority = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    comment = models.TextField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
-    excerpt = models.TextField(blank=True)
-    updated_on = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ["-created_on"]
-
+    
     def __str__(self):
-        return f"{self.title} | written by {self.author}"
+        return self.name

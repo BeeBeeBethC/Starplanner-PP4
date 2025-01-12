@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.views import generic
-from .models import Post
-
+from .models import Task
 
 # Create your views here.
-class PostList(generic.ListView):
-    queryset = Post.objects.filter(status=1)
-    template_name = "starplanner/index.html"
-    paginate_by = 6
+# home
+def index(request):
+    return render(request, '../index.html')
+
+# create_task_view
+# read_task_view
+# update_task_view
+# delete_task_view
