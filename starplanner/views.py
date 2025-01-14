@@ -5,9 +5,9 @@ from django.urls import path
 from django.template import loader
 
 # Create your views here.
-# home - rocket launcher!
+# home - starplanner home!!
 def starplanner(request):
-    template = loader.get_template('index.html')
+    template = loader.get_template('base.html')
     return HttpResponse(template.render())
 
 # create_task_view
