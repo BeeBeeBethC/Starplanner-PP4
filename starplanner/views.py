@@ -5,7 +5,7 @@ from django.urls import path
 from django.template import loader
 
 # Create your views here.
-# home - starplanner home!!
+# home - starplanner home view!!
 def starplanner(request):
     template = loader.get_template('base.html')
     return HttpResponse(template.render())
