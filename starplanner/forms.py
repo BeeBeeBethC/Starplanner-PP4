@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 
-class RegistryForm(forms.ModelForm):
+class SignUpForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 

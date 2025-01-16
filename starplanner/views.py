@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.contrib.auth.models import User
-from .forms import RegistryForm
+from .forms import SignUpForm
 
 
 # Create your views here.
@@ -25,7 +25,7 @@ def starplanner(request):
 # create user view
 def registery_view(request):
     if request.method == "POST":
-        form = RegistryForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
@@ -33,8 +33,8 @@ def registery_view(request):
             login(request, user)
             return redirect('planner_home')
         else:
-            form = RegistryForm()
-            return render(request, 'accounts/safe_planner_view.html', {'form':form})
+            form = SignUpForm()
+        return render(request, 'accounts/registry.html', {'form':form})
 
 
 def login_view(request):
@@ -48,7 +48,7 @@ def login_view(request):
             return redirect(next_url)
         else:
             error_message = "Credentials Do Not Exist!"
-    return render(request, 'accounts/login.html', {'error':error_message})
+    return render(request, 'accounts/login.html', {error_message})
 
 
 def logout_view(request):
@@ -63,7 +63,7 @@ def logout_view(request):
 # using login required decorator
 @login_required
 def planner_home(request):
-    return render(request, 'safe_planner_view.html')
+    return render(request, 'accounts/landing.html')
 
 class SafeView(LoginRequiredMixin, View):
     login_url = '/login/'
