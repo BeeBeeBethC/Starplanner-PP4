@@ -23,7 +23,8 @@ def starplanner(request):
 
 
 # create user view
-def registery_view(request):
+def register_view(request):
+    template = loader.get_template('accounts/register.html')
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
@@ -34,7 +35,7 @@ def registery_view(request):
             return redirect('planner_home')
         else:
             form = SignUpForm()
-        return render(request, 'accounts/registry.html', {'form':form})
+        return render(request, 'accounts/register.html', {'form':form})
 
 
 def login_view(request):
@@ -47,8 +48,8 @@ def login_view(request):
             request.POST.get('next') or request.GET.get('next') or 'starplanner'
             return redirect(next_url)
         else:
-            error_message = "Credentials Do Not Exist!"
-    return render(request, 'accounts/login.html', {error_message})
+            error_message = "Credentials Do Not Exist In The Solar System!"
+    return render(request, 'accounts/login.html', {'error' :error_message})
 
 
 def logout_view(request):
