@@ -63,7 +63,7 @@ def logout_view(request):
 # using login required decorator
 @login_required
 def planner_home(request):
-    return render(request, 'accounts/landing.html')
+    return render(request, 'accounts/safe_planner_view.html')
 
 class SafeView(LoginRequiredMixin, View):
     login_url = '/login/'

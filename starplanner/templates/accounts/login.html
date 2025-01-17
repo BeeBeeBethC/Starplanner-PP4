@@ -1,19 +1,10 @@
-{% load static %}
+{% extends base.html %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-    <style>
-        .error{
-            color:red;
-        }
-    </style>
-</head>
-<body>
+{% block title %} 
+    Login 
+{% endblock %}
+
+{% block content %}
     <h2>Login</h2>
     <form method="POST" action="{% url 'login' %}">
         {% csrf_token %}
@@ -32,5 +23,4 @@
         <p class="error">{{ error }}</p>
     {% endif %}
     <p>Don't have an account? <a href="{% url 'register' %}">Register Here</a></p>
-</body>
-</html>
+{% endblock %}

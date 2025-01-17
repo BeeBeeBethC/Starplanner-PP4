@@ -1,14 +1,11 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-</head>
-<body>
+{% block title %} 
+    Register 
+{% endblock %}
+
+{% block content %}
+
     <div class="container">
           <h2>Register</h2>
           <form method="POST" action="{% url 'registery' %}">
@@ -17,5 +14,5 @@
                 <button type="submit">Register</button>
           </form>  
     </div>
-</body>
-</html>
+    
+{% endblock %}

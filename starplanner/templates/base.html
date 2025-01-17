@@ -1,17 +1,32 @@
 {% load static %}
 
-{% url 'index' as home_url %}
+{% url 'home' as home_url %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starplanner!</title>
+    <title>{% block title %} Starplanner! {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
+
 <body>
     <h1>Hi! I'm your Starplanner! I'm here to help you! you have successfully rendered me in template form!</h1>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p class="m-0 text-center text-white">Made by Code Instituters</p>
+        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
+            <i class="fab fa-twitter-square ms-3"></i>
+            <i class="fab fa-instagram-square ms-3"></i>
+            <i class="fab fa-youtube-square ms-3"></i>
+    </footer>
     <script src="{% static 'js/script.js' %}"></script>
     <!--- <img src="{% static 'images/yourimage.png' %}" alt=""> --->
 </body>
+
 </html>

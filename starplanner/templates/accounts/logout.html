@@ -1,14 +1,10 @@
-{% load static %}
+{% extends base.html %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-</head>
-<body>
+{% block title %}
+    Logout
+{% endblock %}
+
+{% block content %}
     <div class="container">
         <h2>Logout</h2>
         <p>Are you sure you want to logout?</p>
@@ -18,5 +14,4 @@
             <a href="{% url 'safe_planner_view' %}">Cancel</a>
         </form>
     </div>
-</body>
-</html>
+{% endblock %}
