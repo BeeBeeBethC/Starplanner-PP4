@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="register-form">
-          <form method="POST">
+    <h2>You have successfully rendered a view in a base template!</h2>
+        <div class="register-form">
+            <form method="POST">
                 {% csrf_token %}
-                {{form.as_p}}
+                <label for="your_username">Your name: </label>
+                <input id="your_name" type="text" name="your_name" value="{{ form }}">
                 <button type="submit">Register</button>
-          </form>  
-    </div>    
+            </form>
+        </div>    
 {% endblock %}

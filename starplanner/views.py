@@ -1,13 +1,13 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import path
-from django.template import loader
+from django.template import loader, RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.contrib.auth.models import User
-from .forms import SignUpForm
+from .forms import RegisterForm
 
 
 # Create your views here.
@@ -25,20 +25,24 @@ def starplanner(request):
 # create user view
 def register_view(request):
     template = loader.get_template('accounts/register.html')
+    return HttpResponse(template.render())
     if request.method == "POST":
-        form = SignUpForm(request.POST)
+        request_context = RequestContext(request)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
             user = User.object.create_user(username=username, password=password)
             login(request, user)
-            return redirect('planner_home')
-        else:
-            form = SignUpForm()
-        return render(request, 'accounts/register.html', {'form':form})
+            return HttpResponseRedirect("login/")
+    else:
+            form = RegisterForm()
+    return render(request, 'accounts/register.html', {"form": form})
 
 
 def login_view(request):
+    template = loader.get_template('accounts/login.html')
+    return HttpResponse(template.render())
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
@@ -47,12 +51,14 @@ def login_view(request):
             login(request,user)
             request.POST.get('next') or request.GET.get('next') or 'starplanner'
             return redirect(next_url)
-        else:
-            error_message = "Credentials Do Not Exist In The Solar System!"
+    else:
+        error_message = "Credentials Do Not Exist In The Solar System!"
     return render(request, 'accounts/login.html', {'error' :error_message})
 
 
 def logout_view(request):
+    template = loader.get_template('accounts/logout.html')
+    return HttpResponse(template.render())
     if request.method == "POST":
         logout(request)
         return redirect('login')
