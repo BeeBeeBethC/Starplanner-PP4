@@ -34,7 +34,7 @@ def register_view(request):
             password = form.cleaned_data.get("password")
             user = User.object.create_user(username=username, password=password)
             login(request, user)
-            return HttpResponseRedirect("login/")
+            return HttpResponseRedirect("/login/")
     else:
             form = RegisterForm()
     return render(request, 'accounts/register.html', {"form": form})
