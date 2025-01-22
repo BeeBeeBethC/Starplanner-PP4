@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'starplanner',
     'django_summernote',
+    'accounts',
+    'main',
 ]
 
 MIDDLEWARE = [
