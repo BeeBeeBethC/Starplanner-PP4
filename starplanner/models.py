@@ -10,9 +10,3 @@ class Task(models.Model):
 # this is a full string representation of the tasks
     def __str__(self):
         return (f"ID:{self.task}: Added By: {self.user}, Priority: {self.priority}, Task Description: {self.description}")
-
-
-# registering a new user
-class Appuser(models.Model):
-    firstname = models.CharField(max_length=100)
-    lastname = models.CharField(max_length=100)
