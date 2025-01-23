@@ -7,5 +7,5 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 def accounts(request):
-    template = loader.get_template('accounts/register.html')
+    template = loader.get_template('register.html')
     return HttpResponse(template.render())

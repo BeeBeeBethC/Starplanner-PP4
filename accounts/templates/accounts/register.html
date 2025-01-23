@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main_content %}
+<h2>You have successfully rendered register.html template!</h2>
+<form class="register-form" id="register" method="post" action="{% url 'accounts_register' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Register">
+</form>
+{% endblock %}

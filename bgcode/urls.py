@@ -19,7 +19,8 @@ from django.urls import path, include
 from accounts.views import accounts
 
 urlpatterns = [
-    path('', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('starplanner.urls')),
