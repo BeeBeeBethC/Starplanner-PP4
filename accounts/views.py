@@ -10,25 +10,28 @@ from django.contrib.auth.models import User
 def accounts_home(request):
     template = loader.get_template('accounts.html')
     return HttpResponse(template.render())
+
     
-    # render(request, 'accounts/register.html')
+def register(request):
+    template = loader.get_template('register.html')
+    return HttpResponse(template.render())
+    
 
 def login_user(request):
     template = loader.get_template('login.html')
     return HttpResponse(template.render())
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
+            username = request.POST["username"]
+            password = request.POST["password"]
+            user = authenticate(request, username=username, password=password)
+    if user is not None:
+            login(render(request, user))
             return redirect('home')
-        else:
+    else:
             # Return an 'invalid login' error message.
             error = ("Credentials Do Not Exist In The Solar System!")
-            return redirect('login')
-    else:
-        return render(request, 'accounts/login.html', {})
+    return redirect('login')
+    
 
 def logout_user(request):
     template = loader.get_template('accounts/logout.html')
