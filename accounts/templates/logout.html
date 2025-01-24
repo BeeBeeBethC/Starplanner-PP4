@@ -11,7 +11,7 @@
         <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
             <button type="submit">Logout</button>
-            <a href="{% url 'safe_planner_view' %}">Cancel</a>
+            <a href="{% url 'accounts' %}">Cancel</a>
         </form>
     </div>
 {% endblock %}

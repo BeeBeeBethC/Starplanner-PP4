@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block title %}
-Register
+Sign Up!
 {% endblock %}
 
-{% block main_content %}
+{% block content %}
 <h2>You have successfully rendered register.html template!</h2>
-<form class="register-form" id="register" method="post" action="{% url 'accounts_register' %}">
+<form class="register-form" id="register" method="post" action="{% url 'register' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Register">

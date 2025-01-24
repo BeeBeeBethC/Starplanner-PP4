@@ -31,10 +31,10 @@ def login_user(request):
             # Return an 'invalid login' error message.
             error = ("Credentials Do Not Exist In The Solar System!")
     return redirect('login')
-    
+
 
 def logout_user(request):
-    template = loader.get_template('accounts/logout.html')
+    template = loader.get_template('logout.html')
     return HttpResponse(template.render())
     if request.method == "POST":
         logout(request)
