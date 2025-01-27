@@ -4,7 +4,9 @@ from . import views
 
 urlpatterns = [
     path('', views.starplanner, name='starplanner'),
-    # needs to go to main path('planner/', views.planner_home, name='planner_home'),
-    # needs to go to accounts path('accounts/', accounts.views.accounts, name='accounts'),
-    # needs to go to main path('safe/', views.SafeView.as_view(), name='protected_logged_in')
+    path('planner/', views.starplanner_home, name="planner_home"),
+    path('create/', views.create_task, name="create"),
+    path('read/', views.read_task, name="read"),
+    path('update/', views.update_task, name="update"),
+    path('delete/', views.delete_task, name="delete"),
 ]
