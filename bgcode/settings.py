@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'starplanner',
     'django_summernote',
     'accounts',
-    'main',
 ]
 
 MIDDLEWARE = [
