@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.template import loader
+from django.template import loader, RequestContext
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+from django.views import View
 
 # Create your views here.
 def accounts_home(request):
@@ -18,23 +18,23 @@ def register(request):
     
 
 def login_user(request):
-    template = loader.get_template('login.html')
-    return HttpResponse(template.render())
     if request.method == "POST":
             username = request.POST["username"]
             password = request.POST["password"]
             user = authenticate(request, username=username, password=password)
-    if user is not None:
-            login(render(request, user))
-            return redirect('home')
+            if user is not None:
+                login(render(request, user))
+                return redirect('home')
+            else:
+                error = ("Credentials Do Not Exist In The Solar System!")
+                return redirect('login')
     else:
-            # Return an 'invalid login' error message.
-            error = ("Credentials Do Not Exist In The Solar System!")
-    return redirect('login')
+        template = loader.get_template('login.html')
+        return HttpResponse(template.render())
 
 
 def logout_user(request):
-    template = loader.get_template('logout.html')
+    template = loader.get_template('login.html')
     return HttpResponse(template.render())
     if request.method == "POST":
         logout(request)
