@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-beebeebethc-starplanner-8vpykqpxx8i.ws.codeinstitute-ide.net',
@@ -152,7 +152,7 @@ STATIC_URL = 'static/'
 # MEDIA_URL = 'images/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates/static'), 
+    os.path.join(BASE_DIR, 'starplanner/static'), 
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'setupfiles')
