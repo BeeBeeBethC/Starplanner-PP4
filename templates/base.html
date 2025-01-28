@@ -18,7 +18,7 @@
 
 <body>
     <h1>Hi! I'm your Starplanner! I'm here to help you! you have successfully rendered me in template form!</h1>
-    <nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
         {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
@@ -34,8 +34,14 @@
         {% endif %}
     </nav>
     <main>
+        {% if user.is_authenticated %}
+        <p class="text-end m-3">You are logged in as {{ user.username }}</p>
+        {% else %}
+        <p class="text-end m-3">You are not logged in</p>
+        {% endif %}
         {% block content %}
-        {% endblock %}
+        <!-- Content Goes here -->
+        {% endblock content %}
     </main>
     <footer>
         <p class="m-0 text-center text-white">Made by Code Instituters</p>
