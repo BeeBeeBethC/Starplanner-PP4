@@ -152,7 +152,7 @@ STATIC_URL = 'static/'
 # MEDIA_URL = 'images/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'starplanner/static'), 
+    os.path.join(BASE_DIR, 'starplanner/static/'), 
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'setupfiles')
