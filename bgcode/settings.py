@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-beebeebethc-starplanner-8vpykqpxx8i.ws.codeinstitute-ide.net',
+    '127.0.0.1',
     '.herokuapp.com',
     'starplanner-d7711dee4aa3.herokuapp.com'
 ]
@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'starplanner',
-    'django_summernote',
+    # 'django-summernote',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -107,7 +107,7 @@ DATABASES = {
 }
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.codeinstitute-ide.net/",
+    "https://localhost",
     "https://*.herokuapp.com"
 ]
 
