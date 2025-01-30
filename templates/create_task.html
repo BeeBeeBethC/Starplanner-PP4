@@ -8,5 +8,10 @@ Create Task
 {% block content %}
 <div class="login-form">
     <h2>Create tasks for your day here!</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Task</button>
+    </form>
 </div>
 {% endblock %}
