@@ -40,7 +40,7 @@ def read_task(request):
 
 # update_task_view
 def update_task(request):
-    tasks = Task.objects.all()
+    Task.objects.get()
     return render(request, 'update_task.html')
 
 
