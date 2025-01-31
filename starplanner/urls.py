@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.starplanner, name='starplanner'),
-    path('planner/', views.starplanner_home, name="planner_home"),
     path('create/', views.create_task, name="create"),
     path('read/', views.read_task, name="read"),
     path('update/<int:task_id>/', views.update_task, name="update"),

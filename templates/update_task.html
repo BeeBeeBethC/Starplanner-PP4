@@ -7,7 +7,12 @@ Update Task
 {% endblock %}
 
 {% block content %}
-<div>
-    <h2>Update tasks for your day here!</h2>
+<div class="form-container">
+    <h2>Update Task</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update Task</button>
+    </form>
 </div>
 {% endblock %}
