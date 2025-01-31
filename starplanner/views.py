@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import path
 from django.template import loader, RequestContext
@@ -27,7 +27,7 @@ def create_task(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('create')
+            return redirect('create/')
     context = {'form': form}
     return render(request, 'create_task.html', context)
 
@@ -39,11 +39,21 @@ def read_task(request):
 
 
 # update_task_view
-def update_task(request):
-    Task.objects.get()
-    return render(request, 'update_task.html')
+def update_task(request, task_id):
+    task = get_object_or_404(Task, task=task_id)
+    form = TaskForm(instance=task)
+    if request.method == "POST":
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('read_task')
+    return render(request, 'update_task.html', {'form': form})
 
 
 # delete_task_view
-def delete_task(request):
-    return render(request, 'delete_task.html')
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, task=task_id)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('read_task')
+    return render(request, 'delete_task.html', {'task': task})

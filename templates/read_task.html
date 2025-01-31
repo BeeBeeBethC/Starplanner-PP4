@@ -7,7 +7,27 @@ Task Planner
 {% endblock %}
 
 {% block content %}
-<div>
-    <h2>review tasks for your day here!</h2>
-</div>
+<h1>Tasks</h1>
+<table>
+    <tr>
+        <th>Task ID</th>
+        <th>User</th>
+        <th>Priority</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.task }}</td>
+        <td>{{ task.user }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.description }}</td>
+        <td>
+            <a href="{% url 'update' task.task %}">Update</a>
+            <a href="{% url 'delete' task.task %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'create' %}">Create New Task</a>
 {% endblock %}
