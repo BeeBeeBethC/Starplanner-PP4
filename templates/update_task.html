@@ -7,12 +7,13 @@ Update Task
 {% endblock %}
 
 {% block content %}
-<div class="form-container">
+<body class="form-container">
     <h2>Update Task</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Update Task</button>
     </form>
-</div>
+    <a href="{% url 'read' %}">Back</a>
+</body>
 {% endblock %}
