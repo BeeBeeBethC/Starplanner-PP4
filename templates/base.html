@@ -18,20 +18,20 @@
 <body>
     <h1>Hi! I'm your Starplanner! I'm here to help you! you have successfully rendered me in template form!</h1>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
-            </li>
-        {% else %}
-            <li class="nav-item">
-                <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                    href="{% url 'account_signup' %}">Register</a>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
                 </li>
-            <li class="nav-item">
-                <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
-            </li>
-        {% endif %}
-    </nav>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
+                        href="{% url 'account_signup' %}">Register</a>
+                    </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                </li>
+            {% endif %}
+        </nav>
     <main>
         {% if user.is_authenticated %}
         <p class="text-end m-3">You are logged in as {{ user.username }}</p>
@@ -43,14 +43,10 @@
         {% endblock content %}
     </main>
     <footer>
-        <p class="m-0 text-center text-white">Made by Code Instituters</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i>
-    </footer>
+        <p class="m-0 text-center text-white">This is Portfolio Project 4. Made by Bethan Cottell</p>
     <!---<script src="{% static 'js/script.js' %}"></script>
-     <img src="{% static 'images/yourimage.png' %}" alt=""> --->
+     <img src="{% static 'images/yourimage.png' %}" alt=""> -->
+    </footer>
 </body>
 
 </html>

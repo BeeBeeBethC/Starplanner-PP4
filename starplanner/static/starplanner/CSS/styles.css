@@ -1,6 +1,11 @@
-body {
-    background-color: #b8aaf6;
+*{
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+body{
+    font-family: 'Lucida Sans', 'Geneva', 'Verdana', 'sans-serif';
+    margin: 0;
 }
 h1{
-    background-color:rgb(100, 124, 209);
+    background-color:rgb(220, 226, 248);
 }

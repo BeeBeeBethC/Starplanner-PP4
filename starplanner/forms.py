@@ -1,10 +1,7 @@
 from django import forms
-from django.contrib.auth.models import User
-from .models import Task
+from .models import Task, Profile
 
 class TaskForm(forms.ModelForm):
-    
-    
     class Meta:
         model = Task
         fields= '__all__'
@@ -18,5 +15,14 @@ class TaskForm(forms.ModelForm):
             'task':forms.NumberInput(attrs={'placeholder':'e.g 1', 'class':'form-control'}),
             'user':forms.TextInput(attrs={'placeholder':'e.g Jbloggs', 'class':'form-control'}),
             'priority':forms.RadioSelect(attrs={'choices': 'PRIORITY_CHOICES', 'class':'form-control'}),
-            'description':forms.Textarea(attrs={'placeholder':'describe your task here', 'class':'form-control'}),
+            'description':forms.Textarea(attrs={'placeholder':'Describe Your Task Here', 'class':'form-control'}),
         }
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'email', 'phone']
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)

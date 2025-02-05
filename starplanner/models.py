@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Task(models.Model):
@@ -15,3 +16,14 @@ class Task(models.Model):
 # this is a full string representation of the tasks
     def __str__(self):
         return (f"ID:{self.task}: Added By: {self.user}, Priority: {self.priority}, Task Description: {self.description}")
+
+class Profile(models.Model):
+    name = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    email = models.EmailField(default='example@example.com')
+    phone = models.CharField(max_length=11, default='01234567891')
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self):
+        return f"profile belonging to {self.name.username}"
