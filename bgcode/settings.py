@@ -164,5 +164,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Login/logout redirect
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'starplanner'
+LOGIN_REDIRECT_URL = 'read'
 LOGOUT_REDIRECT_URL = 'starplanner'
