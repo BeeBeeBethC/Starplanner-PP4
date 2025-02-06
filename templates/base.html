@@ -39,7 +39,11 @@
         {% if user.is_authenticated %}
             <p>You are logged in as {{ user.username }}</p>
         {% else %}
-            <p>You are not logged in</p>
+            <p>If you have not already logged in, Please log in. If you have logged in</p>
+            <a href="{% url 'read' %}">Go to the planner</a>
+            <!--<p>Do you want to register or sign in?</p>
+            <a href="{% url 'account_login' %}">Login</a>
+            <a href="{% url 'account_signup' %}">Register</a>-->
         {% endif %}
         {% block content %}
         <!-- Content Goes here -->
