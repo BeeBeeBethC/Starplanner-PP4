@@ -15,6 +15,12 @@ def starplanner(request):
     return HttpResponse(template.render())
 
 
+def dashboard(request):
+    if request.user.is_authenticated:
+        return redirect('dashboard/')
+    else:
+        return redirect('account_login')
+
 # create_task_view
 @login_required
 def create_task(request):
