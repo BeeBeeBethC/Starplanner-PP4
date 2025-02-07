@@ -40,19 +40,15 @@
             <p>You are logged in as {{ user.username }}</p>
         {% else %}
             <p>You are not logged in</p>
-            <!--<p>Do you want to register or sign in?</p>
-            <a href="{% url 'account_login' %}">Login</a>
-            <a href="{% url 'account_signup' %}">Register</a>-->
         {% endif %}
         {% block content %}
         <!-- Content Goes here -->
         {% endblock content %}
     </main>
-    <footer class="footer">
-        <p>This is Portfolio Project 4. Made by Bethan Cottell</p>
     <!---<script src="{% static 'js/script.js' %}"></script>
      <img src="{% static 'images/yourimage.png' %}" alt=""> -->
-    </footer>
 </body>
-
+<footer class="footer">
+        <p>This is Portfolio Project 4. Made by Bethan Cottell</p>
+</footer>
 </html>
