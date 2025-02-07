@@ -23,7 +23,7 @@ def create_task(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('create/')
+            return redirect('read/')
     context = {'form': form}
     return render(request, 'create_task.html', context)
 
