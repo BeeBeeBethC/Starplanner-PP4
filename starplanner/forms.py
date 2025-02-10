@@ -1,6 +1,7 @@
 from django import forms
 from .models import Task, Profile
 
+
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
@@ -22,7 +23,7 @@ class TaskForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['name', 'email', 'phone']
+        fields = ['username', 'email', 'phone']
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
