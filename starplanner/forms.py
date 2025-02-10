@@ -1,7 +1,8 @@
 from django import forms
 from django.forms import ModelForm
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit, Layout, Field
 from .models import Task, Comment
-
 
 class TaskForm(ModelForm):
     PRIORITY_CHOICES = [
@@ -14,33 +15,28 @@ class TaskForm(ModelForm):
 
     class Meta:
         model = Task
-        fields = '__all__'
-        labels = {
-            'task': 'Task',
-            'user': 'User',
-            'priority': 'Priority',
-            'description': 'Description',
-        }
+        fields = ['title', 'priority', 'description']
         widgets = {
-            'task':forms.NumberInput(attrs={'placeholder':'e.g 1', 'class':'form-control'}),
-            'user':forms.TextInput(attrs={'placeholder':'e.g Jbloggs', 'class':'form-control'}),
-            'description':forms.Textarea(attrs={'placeholder':'Describe Your Task Here', 'class':'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'placeholder':'Describe Your Task Here', 'class':'form-control'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Field('title'),
+            Field('priority'),
+            Field('description'),
+        )
+        self.helper.add_input(Submit('submit', 'Save Task'))
 
     def clean_description(self):
         description = self.cleaned_data['description']
         if len(description) < 10:
             raise forms.ValidationError("Description must be at least 10 characters long")
         return description
-    
-
-    def clean_user(self):
-        user = self.cleaned_data['user']
-        if len(user) < 2:
-            raise forms.ValidationError("Username must be at least 2 characters long")
-        return user
-    
 
     def clean(self):
         cleaned_data = super().clean()
@@ -52,39 +48,19 @@ class TaskForm(ModelForm):
 
         return cleaned_data
 
-
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = ('task', 'author', 'body')
-        labels = {
-            'task': 'Task',
-            'author': 'Author',
-            'body': 'Comment content',
-        }
+        fields = ('body',)
         widgets = {
-            'task':forms.NumberInput(attrs={'placeholder':'e.g 1', 'class':'form-control'}),
-            'author':forms.TextInput(attrs={'placeholder':'e.g Jbloggs', 'class':'form-control'}),
-            'body':forms.Textarea(attrs={'placeholder':'write your comment here', 'class':'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
         }
-    def clean_task(self):
-        task_id = self.cleaned_data['task']
-        try:
-            task = Task.objects.get(pk=task_id)
-            return task
-        except Task.DoesNotExist:
-            raise forms.ValidationError("Task does not exist")
-        
 
-    def clean_author(self):
-        author = self.cleaned_data['author']
-        if len(author) < 2:
-            raise forms.ValidationError("Author name must be at least 2 characters long")
-        return author
-    
-
-    def clean_body(self):
-        body = self.cleaned_data['body']
-        if len(body) < 10:
-            raise forms.ValidationError("Comment must be at least 10 characters long")
-        return body
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            Field('body'),
+        )
+        self.helper.add_input(Submit('submit', 'Add Comment'))

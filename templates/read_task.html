@@ -1,33 +1,40 @@
-{% extends 'base.html' %}
-{% load static %}
-
-
-{% block title %}
-Task Planner
-{% endblock %}
-
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-<h1>Tasks</h1>
-<table>
-    <tr>
-        <th>Task ID</th>
-        <th>User</th>
-        <th>Priority</th>
-        <th>Description</th>
-        <th>Actions</th>
-    </tr>
+<div class="container mt-4">
+    <h2>Tasks</h2>
     {% for task in tasks %}
-    <tr>
-        <td>{{ task.task }}</td>
-        <td>{{ task.user }}</td>
-        <td>{{ task.priority }}</td>
-        <td>{{ task.description }}</td>
-        <td>
-            <a href="{% url 'update' task.task %}">Update</a>
-            <a href="{% url 'delete' task.task %}">Delete</a>
-        </td>
-    </tr>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">{{ task.title }}</h5>
+            <p class="card-text">{{ task.description }}</p>
+            <p class="text-muted">Priority: {{ task.priority }}</p>
+            <p class="text-muted">Added by: {{ task.author }}</p>
+            
+            <div class="mt-3">
+                <h6>Comments:</h6>
+                {% for comment in task.comments.all %}
+                <div class="border-left pl-3 mb-2">
+                    <p class="mb-1">{{ comment.body }}</p>
+                    <small class="text-muted">By {{ comment.author }} on {{ comment.created_on|date:"M d, Y" }}</small>
+                </div>
+                {% endfor %}
+                
+                <form method="POST" class="mt-3">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input type="hidden" name="task_id" value="{{ task.task }}">
+                    {{ comment_form.body }}
+                    <button type="submit" class="btn btn-sm btn-primary mt-2">Add Comment</button>
+                </form>
+            </div>
+
+            <div class="mt-3">
+                <a href="{% url 'update_task' task_id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete_task' task_id %}" class="btn btn-sm btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</table>
-<a href="{% url 'create' %}">Create New Task</a>
+</div>
 {% endblock %}
