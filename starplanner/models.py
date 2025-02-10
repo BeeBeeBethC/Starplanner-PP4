@@ -14,7 +14,7 @@ class Task(models.Model):
     priority = models.CharField(max_length=100, choices=PRIORITY_CHOICES, default='low')
     description = models.TextField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
     
-# this is a full string representation of the tasks
     def __str__(self):
-        return (f"ID:{self.task}: Added By: {self.user}, Priority: {self.priority}, Task Description: {self.description}")
+        return (f"Task for {self.author}")
