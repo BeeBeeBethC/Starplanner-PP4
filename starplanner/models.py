@@ -21,12 +21,11 @@ class Task(models.Model):
 
     def __str__(self):
         return (f"Task added by:{self.author}, Title:{self.title}, Priority:{self.priority}")
+
     
 class Comment(models.Model):
-    task = models.ForeignKey(
-        Task, on_delete=models.CASCADE, related_name="comments")
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="comment_author")
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="comment_author")
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
