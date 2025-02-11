@@ -29,34 +29,10 @@ def create_task(request):
     return render(request, 'create_task.html', {'form': form})
 
 
-class ReadTaskView(LoginRequiredMixin, ListView):
-    template_name = 'read_task.html'
-
-    def get(self, request):
-        tasks = Task.objects.all()
-        comment_form = CommentForm()
-        return render(request, self.template_name, {
-            'tasks': tasks,
-            'comment_form': comment_form
-        })
-
-    def post(self, request):
-        tasks = Task.objects.all()
-        task_id = request.POST.get('task_id')
-        task = get_object_or_404(Task, pk=task_id)
-        comment_form = CommentForm(request.POST)
-
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.task = task
-            comment.author = request.user
-            comment.save()
-            return redirect('read')
-
-        return render(request, self.template_name, {
-            'tasks': tasks,
-            'comment_form': comment_form
-        })
+@login_required
+def read_task(request):
+    tasks = Task.objects.all()
+    return render(request, 'read_task.html', {'tasks': tasks})
 
 
 @login_required
@@ -79,3 +55,16 @@ def delete_task(request, task_id):
         task.delete()
         return redirect('read')
     return render(request, 'delete_task.html', {'task': task})
+
+
+@login_required
+def comment_task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, author=request.user)
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('read')
+    else:
+        form = CommentForm(instance=task)
+    return render(request, 'comment.html', {'form': form, 'task': task})

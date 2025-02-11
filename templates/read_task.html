@@ -2,35 +2,29 @@
 
 {% block content %}
 <body class="container mt-4">
-    <h2>Tasks</h2>
+    <h1>Tasks</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Added by</th>
+            <th>Actions</th>
+        </tr>
     {% for task in tasks %}
-    <div class="card mb-3">
-        <div class="card-body">
-            <h5 class="card-title">{{ task.title }}</h5>
-            <p class="card-text">{{ task.description }}</p>
-            <p class="text-muted">Priority: {{ task.priority }}</p>
-            <p class="text-muted">Added by: {{ task.author }}</p>
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.priority }}</td>
+            <td>{{ task.author }}</td>
+            <td>
+                <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
+                <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger">Delete</a>
+                <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-info">Add Comment</a>
+            </td>
+        </tr>
     {% endfor %}
-            <div class="mt-3">
-                <h6>Comments:</h6>
-                {% for comment in task.comments.all %}
-                <div class="border-left pl-3 mb-2">
-                    <p class="mb-1">{{ comment.body }}</p>
-                    <small class="text-muted">By {{ comment.author }} on {{ comment.created_on|date:"M d, Y" }}</small>
-                </div>
-                {% endfor %}
-                <form method="POST" class="mt-3">
-                    {% csrf_token %}
-                    <input type="hidden" name="task_id" value="{{ task.task }}">
-                    {{ comment_form.body }}
-                    <button type="submit" class="btn btn-sm btn-primary mt-2">Add Comment</button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="mt-3">
-        <a href="{% url 'update' task.pk %}" class="btn btn-sm btn-warning">Edit</a>
-        <a href="{% url 'delete' task.pk %}" class="btn btn-sm btn-danger">Delete</a>
-    </div>
+</table>
+    <a href="{% url 'create' %}">Create New Task</a>
 </body>
 {% endblock %}
