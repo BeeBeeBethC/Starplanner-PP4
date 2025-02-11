@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
+
 {% block content %}
-<div class="container mt-4">
+<body class="container mt-4">
     <h2>Tasks</h2>
     {% for task in tasks %}
     <div class="card mb-3">
@@ -10,7 +10,7 @@
             <p class="card-text">{{ task.description }}</p>
             <p class="text-muted">Priority: {{ task.priority }}</p>
             <p class="text-muted">Added by: {{ task.author }}</p>
-            
+    {% endfor %}
             <div class="mt-3">
                 <h6>Comments:</h6>
                 {% for comment in task.comments.all %}
@@ -19,22 +19,18 @@
                     <small class="text-muted">By {{ comment.author }} on {{ comment.created_on|date:"M d, Y" }}</small>
                 </div>
                 {% endfor %}
-                
                 <form method="POST" class="mt-3">
                     {% csrf_token %}
-                    {{ form|crispy }}
                     <input type="hidden" name="task_id" value="{{ task.task }}">
                     {{ comment_form.body }}
                     <button type="submit" class="btn btn-sm btn-primary mt-2">Add Comment</button>
                 </form>
             </div>
-
-            <div class="mt-3">
-                <a href="{% url 'update_task' task_id %}" class="btn btn-sm btn-warning">Edit</a>
-                <a href="{% url 'delete_task' task_id %}" class="btn btn-sm btn-danger">Delete</a>
-            </div>
         </div>
     </div>
-    {% endfor %}
-</div>
+    <div class="mt-3">
+        <a href="{% url 'update' task.pk %}" class="btn btn-sm btn-warning">Edit</a>
+        <a href="{% url 'delete' task.pk %}" class="btn btn-sm btn-danger">Delete</a>
+    </div>
+</body>
 {% endblock %}

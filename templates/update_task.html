@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
 {% load static %}
 
 
@@ -12,7 +12,6 @@ Update Task
     <h2>Update Task</h2>
     <form method="POST">
         {% csrf_token %}
-        {{ form|crispy }}
         {{ form.as_p }}
         <button type="submit">Update Task</button>
     </form>
