@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-<body class="container mt-4">
     <h1>Tasks</h1>
     <table class="table table-hover">
         <thead class="table-dark">
@@ -17,21 +16,41 @@
 {% for task in tasks %}
         <tbody>
             <tr>
-                <div class="task" data-task-user="{{ task.user.username }}">
-                    <td>{{ task.title }}</td>
-                    <td>{{ task.description }}</td>
-                    <td>{{ task.priority }}</td>
-                    <td>{{ task.author }}</td>
-                    <td>
-                        <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning aria-disabled='false' edit-task">Update</a>
-                        <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger aria-disabled='false' delete-task">Delete</a>
-                        <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-info">Add Comment</a>
-                    </td>
-                </div>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.priority }}</td>
+                <td>{{ task.author }}</td>
+                <td>
+                    {% if task.author == user %}
+                    <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
+                    <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger">Delete</a>
+                    {% else %}
+                        <button onclick="showPermissionModal()" class="btn btn-sm btn-warning">Update</button>
+                        <button onclick="showPermissionModal()" class="btn btn-sm btn-danger">Delete</button>
+                    {% endif %}
+                </td>
             </tr>
-        </tbody>
 {% endfor %}
+        </tbody>
     </table>
-    <a href="{% url 'create' %}" class="btn btn-sm btn-success">Create New Task</a>
-</body>
+        <a href="{% url 'create' %}" class="btn btn-sm btn-success">Create New Task</a>
+        
+        <!-- Bootstrap styled - Permission Modal -->
+        <div class="modal-fade" id="permissionModal" tabindex="-1" aria-labelledby="permission-denied" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5">Permission Denied</h1>
+                  <button type="button" class="btn-close" aria-label="Close" onclick="closePermissionModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" onclick="closePermissionModal()">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
 {% endblock %}
