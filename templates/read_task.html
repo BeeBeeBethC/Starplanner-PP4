@@ -1,30 +1,37 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <body class="container mt-4">
     <h1>Tasks</h1>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Priority</th>
-            <th>Added by</th>
-            <th>Actions</th>
-        </tr>
-    {% for task in tasks %}
-        <tr>
-            <td>{{ task.title }}</td>
-            <td>{{ task.description }}</td>
-            <td>{{ task.priority }}</td>
-            <td>{{ task.author }}</td>
-            <td>
-                <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
-                <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger">Delete</a>
-                <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-info">Add Comment</a>
-            </td>
-        </tr>
-    {% endfor %}
-</table>
-    <a href="{% url 'create' %}">Create New Task</a>
+    <table class="table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Added by</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+{% for task in tasks %}
+        <tbody>
+            <tr>
+                <div class="task" data-task-user="{{ task.user.username }}">
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.description }}</td>
+                    <td>{{ task.priority }}</td>
+                    <td>{{ task.author }}</td>
+                    <td>
+                        <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning aria-disabled='false' edit-task">Update</a>
+                        <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger aria-disabled='false' delete-task">Delete</a>
+                        <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-info">Add Comment</a>
+                    </td>
+                </div>
+            </tr>
+        </tbody>
+{% endfor %}
+    </table>
+    <a href="{% url 'create' %}" class="btn btn-sm btn-success">Create New Task</a>
 </body>
 {% endblock %}
