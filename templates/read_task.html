@@ -28,6 +28,7 @@
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-warning">Update</button>
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-danger">Delete</button>
                     {% endif %}
+                    <a href="{% url 'comment' %}" class="btn btn-sm btn-info btn-disabled">Comment</a>
                 </td>
             </tr>
 {% endfor %}
@@ -36,7 +37,7 @@
         <a href="{% url 'create' %}" class="btn btn-sm btn-success">Create New Task</a>
         
         <!-- Bootstrap styled - Permission Modal -->
-        <div class="modal-fade" id="permissionModal" tabindex="-1" aria-labelledby="permission-denied" aria-hidden="true" style="display: none;">
+        <div class="modal-fade" id="permissionModal" tabindex="-1" aria-labelledby="permission-denied" style="display: none;">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">

@@ -8,5 +8,5 @@ urlpatterns = [
     path('read/', views.read_task, name='read'),
     path('update/<int:task_id>/', views.update_task, name="update"),
     path('delete/<int:task_id>/', views.delete_task, name="delete"),
-    path('comment/<int:task_id>/', views.comment_task, name="comment"),
+    path('comment/', views.comment_task, name="comment"),
 ]

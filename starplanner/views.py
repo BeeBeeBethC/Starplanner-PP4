@@ -58,8 +58,8 @@ def delete_task(request, task_id):
 
 
 @login_required
-def comment_task(request, task_id):
-    task = get_object_or_404(Task, pk=task_id, author=request.user)
+def comment_task(request):
+    task = get_object_or_404(Task, author=request.user)
     if request.method == "POST":
         form = CommentForm(request.POST, instance=task)
         if form.is_valid():
