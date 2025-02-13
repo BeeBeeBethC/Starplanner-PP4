@@ -3,14 +3,16 @@
 
 {% block content %}
     <h1>Tasks</h1>
-    <table class="table table-hover">
-        <thead class="table-dark">
+    <table class="task-table">
+        <thead>
             <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Priority</th>
-                <th scope="col">Added by</th>
-                <th scope="col">Actions</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Added by</th>
+                <th>Created On:</th>
+                <th>Updated On:</th>
+                <th>Actions</th>
             </tr>
         </thead>
 {% for task in tasks %}
@@ -20,6 +22,8 @@
                 <td>{{ task.description }}</td>
                 <td>{{ task.priority }}</td>
                 <td>{{ task.author }}</td>
+                <td>{{ task.created_on }}</td>
+                <td>{{ task.updated_on }}</td>
                 <td>
                     {% if task.author == user %}
                     <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
@@ -42,7 +46,6 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h1 class="modal-title fs-5">Permission Denied</h1>
-                  <button type="button" class="btn-close" aria-label="Close" onclick="closePermissionModal()"></button>
                 </div>
                 <div class="modal-body">
                     <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>

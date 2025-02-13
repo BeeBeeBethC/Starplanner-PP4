@@ -22,20 +22,22 @@ body {
 
 .navbar {
     display: flex;
-    border: white solid 2px;
-    background-color: black;
+    border: black solid 2px;
+    background-color: white;
+    list-style-type: none;
+    padding: 0;
 }
 
-.nav-item a {
-    color: white;
+.list-item {
+    color: black;
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
 }
 
-.nav-item a:hover {
+.list-item a:hover {
     background-color: whitesmoke;
-    color: black;
+    border: black solid 1px;
 }
 
 /* Column container */
