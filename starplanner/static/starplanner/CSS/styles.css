@@ -20,6 +20,14 @@ body {
     color: black;
 }
 
+.footer {
+    position: fixed;
+    width: 100%;
+    padding: 20px;
+    color: black;
+    text-align: center;
+    background-image: linear-gradient(to right, #CEDCFF, #D3CBFA, #F4BAD6, #FFCDAD, #FFE5AD);
+}
 .navbar {
     display: flex;
     border: black solid 2px;
@@ -61,13 +69,7 @@ body {
     padding: 20px;
 }
 
-.footer {
-    border: white solid 3px;
-    padding: 20px;
-    color: black;
-    text-align: center;
-    background-image: linear-gradient(to right, #CEDCFF, #D3CBFA, #F4BAD6, #FFCDAD, #FFE5AD);
-}
+
 
 /* sample css modal styling */
 .modal-fade {

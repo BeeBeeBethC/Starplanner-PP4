@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
+from django.contrib import messages
 from django.template import loader
-from django.http import HttpResponse, HttpResponseRedirect
-from .models import Task
+from django.http import HttpResponse
+from .models import Task, Comment
 from .forms import TaskForm, CommentForm
 from django.core.paginator import Paginator
 
@@ -24,11 +23,26 @@ def create_task(request):
             task = form.save(commit=False)
             task.author = request.user
             task.save()
+            Comment.objects.create(
+                task = task,
+                author = request.user,
+                body = f"Task created on {task.created_on.strftime('%Y-%m-%d %H:%M:%S')}",
+                approved = True
+            )
             return redirect('read')
     else:
         form = TaskForm()
     return render(request, 'create_task.html', {'form': form})
 
+
+@login_required
+def comments(request, task_id):
+    task = get_object_or_404(Task, pk=task_id, author=request.user)
+    comments = task.comments.all().order_by('-created_on')
+    return render(request, 'comment.html', {
+        'task': task,
+        'comments': comments
+    })
 
 @login_required
 def read_task(request):
@@ -45,7 +59,13 @@ def update_task(request, task_id):
     if request.method == "POST":
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
-            form.save()
+            task = form.save()
+            Comment.objects.create(
+                task = task,
+                author = request.user,
+                body = f"Task updated on {task.updated_on.strftime('%Y-%m-%d %H:%M:%S')}",
+                approved = True
+            )
             return redirect('read')
     else:
         form = TaskForm(instance=task)
@@ -60,15 +80,3 @@ def delete_task(request, task_id):
         return redirect('read')
     return render(request, 'delete_task.html', {'task': task})
 
-
-@login_required
-def comment_task(request):
-    task = get_object_or_404(Task, author=request.user)
-    if request.method == "POST":
-        form = CommentForm(request.POST, instance=task)
-        if form.is_valid():
-            form.save()
-            return redirect('read')
-    else:
-        form = CommentForm(instance=task)
-    return render(request, 'comment.html', {'form': form, 'task': task})

@@ -4,13 +4,16 @@
 Comment
 {% endblock %}
 {% block content %}
-<div class="comment-form">
-    <h2>Comment on other tasks</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Make Comment</button>
-    </form>
-    <a href="{% url 'read' %}">Back</a>
+<div class="container mt-4">
+    <h2>Comments for {{ task.title }}</h2>
+    <div class="comments-section mt-3">
+        {% for comment in task.comments.all %}
+        <div class="comment border-left pl-3 mb-2">
+            <p class="mb-1">{{ comment.body }}</p>
+            <small class="text-muted">By {{ comment.author }} on {{ comment.created_on|date:"M d, Y H:i:s" }}</small>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'read' %}" class="btn btn-primary mt-3">Back to Tasks</a>
 </div>
 {% endblock %}

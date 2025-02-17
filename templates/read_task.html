@@ -28,11 +28,12 @@
                     {% if task.author == user %}
                     <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
                     <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-info">Comment</a>
                     {% else %}
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-warning">Update</button>
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-danger">Delete</button>
+                        <button onclick="showPermissionModal()" class="btn btn-sm btn-info">Comment</button>
                     {% endif %}
-                    <a href="{% url 'comment' %}" class="btn btn-sm btn-info btn-disabled">Comment</a>
                 </td>
             </tr>
 {% endfor %}
