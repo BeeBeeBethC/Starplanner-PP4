@@ -13,8 +13,8 @@ Update Task
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update Task</button>
+        <button type="submit" class="btn btn-outline-dark">Update Task</button>
     </form>
-    <a href="{% url 'read' %}">Back</a>
+    <a href="{% url 'read' %}" class="btn btn-outline-dark">Back</a>
 </body>
 {% endblock %}
