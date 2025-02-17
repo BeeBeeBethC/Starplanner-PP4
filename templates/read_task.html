@@ -56,5 +56,22 @@
               </div>
             </div>
           </div>
+          <div class="pagination justify-content-center mt-4">
+            <span class="step-links">
+                {% if tasks.has_previous %}
+                    <a href="?page=1" class="btn btn-sm btn-outline-primary">&laquo; first</a>
+                    <a href="?page={{ tasks.previous_page_number }}" class="btn btn-sm btn-outline-primary">previous</a>
+                {% endif %}
+    
+                <span class="current mx-2">
+                    Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}
+                </span>
+    
+                {% if tasks.has_next %}
+                    <a href="?page={{ tasks.next_page_number }}" class="btn btn-sm btn-outline-primary">next</a>
+                    <a href="?page={{ tasks.paginator.num_pages }}" class="btn btn-sm btn-outline-primary">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </div>
 {% endblock %}

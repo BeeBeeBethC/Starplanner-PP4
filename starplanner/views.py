@@ -6,6 +6,7 @@ from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Task
 from .forms import TaskForm, CommentForm
+from django.core.paginator import Paginator
 
 # home - starplanner home view!!
 
@@ -31,8 +32,11 @@ def create_task(request):
 
 @login_required
 def read_task(request):
-    tasks = Task.objects.all()
-    return render(request, 'read_task.html', {'tasks': tasks})
+    task_list = Task.objects.all()
+    paginator = Paginator(task_list, 2)
+    page_number = request.GET.get("page")
+    tasks = paginator.get_page(page_number)
+    return render(request, 'read_task.html', {"tasks": tasks})
 
 
 @login_required
