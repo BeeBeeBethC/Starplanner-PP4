@@ -3,28 +3,16 @@
 
 {% block content %}
     <h1>Tasks</h1>
-    <table class="task-table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Priority</th>
-                <th>Added by</th>
-                <th>Created On:</th>
-                <th>Updated On:</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+        <div class="card-container">
 {% for task in tasks %}
-        <tbody>
-            <tr>
-                <td>{{ task.title }}</td>
-                <td>{{ task.description }}</td>
-                <td>{{ task.priority }}</td>
-                <td>{{ task.author }}</td>
-                <td>{{ task.created_on }}</td>
-                <td>{{ task.updated_on }}</td>
-                <td>
+            <div class='card'>
+                <h2 class="card-title">{{ task.title }}</h2>
+                <p class="card-body">{{ task.description }}</p>
+                <p class="card-priority">{{ task.priority }}</p>
+                <div class="card-meta">
+                    Posted by: {{ task.author }}
+                    Created: {{ task.created_on }}
+                    Updated: {{ task.updated_on }}
                     {% if task.author == user %}
                     <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
                     <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger">Delete</a>
@@ -34,11 +22,10 @@
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-danger">Delete</button>
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-info">Comment</button>
                     {% endif %}
-                </td>
-            </tr>
+                </div>
+            </div>
 {% endfor %}
-        </tbody>
-    </table>
+        </div>
         <a href="{% url 'create' %}" class="btn btn-sm btn-success">Create New Task</a>
         
         <!-- Bootstrap styled - Permission Modal -->

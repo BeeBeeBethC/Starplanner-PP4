@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+#body {
     font-family: "Radio Canada", serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -21,41 +21,23 @@ body {
 }
 
 .footer {
-    position: fixed;
-    width: 100%;
-    padding: 20px;
-    color: black;
-    text-align: center;
-    background-image: linear-gradient(to right, #CEDCFF, #D3CBFA, #F4BAD6, #FFCDAD, #FFE5AD);
+    position: fixed !important;
+    width: 100% !important;
+    padding: 20px !important;
+    color: black !important;
+    text-align: center !important;
+    background-image: linear-gradient(to right, #CEDCFF, #D3CBFA, #F4BAD6, #FFCDAD, #FFE5AD) !important;
 }
+
 .navbar {
     display: flex;
     border: black solid 2px;
     background-color: white;
 }
 
-.li {
-    color: black;
-    padding: 14px 20px;
-    text-decoration: none;
-    text-align: center;
-    list-style-type: none;
-    padding: 0;
-}
-
-.list-item a:hover {
-    background-color: whitesmoke;
-    border: black solid 1px;
-}
-
-/* Column container */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 /* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
+
+/* Sidebar/left column 
 .side {
     flex: 30%;
     background-color: whitesmoke;
@@ -68,7 +50,7 @@ body {
     background-color: whitesmoke;
     padding: 20px;
 }
-
+*/
 
 
 /* sample css modal styling */
@@ -92,13 +74,6 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-}
-
-/* modal styling end */
-.btn-disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-    opacity: 0.5;
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
