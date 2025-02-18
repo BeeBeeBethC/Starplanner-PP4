@@ -2,32 +2,63 @@
 {% load static %}
 
 {% block content %}
-    <h1>Tasks</h1>
-        <div class="card-container">
-{% for task in tasks %}
-            <div class='card'>
-                <h2 class="card-title">{{ task.title }}</h2>
-                <p class="card-body">{{ task.description }}</p>
-                <p class="card-priority">{{ task.priority }}</p>
-                <div class="card-meta">
-                    Posted by: {{ task.author }}
-                    Created: {{ task.created_on }}
-                    Updated: {{ task.updated_on }}
+    <div class="container mt-4">
+        <h1 class="mb-4">Tasks</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        {% for task in tasks %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">{{ task.title }}</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ task.description }}</p>
+                    <span class="badge {% if task.priority == 'high' %}bg-danger{% elif task.priority == 'medium' %}bg-warning{% else %}bg-success{% endif %}">
+                        {{ task.priority|title }}
+                    </span>
+                </div>
+                <div class="card-footer bg-light ">
+                    <small class="text-muted">
+                        <div>Posted by: {{ task.author }}</div>
+                        <div>Created: {{ task.created_on|date:"M d, Y" }}</div>
+                        <div>Updated: {{ task.updated_on|date:"M d, Y" }}</div>
+                    </small>
+                    <div class="mt-2">
                     {% if task.author == user %}
-                    <a href="{% url 'update' task.task %}" class="btn btn-sm btn-warning">Update</a>
-                    <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-danger">Delete</a>
-                    <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-info">Comment</a>
+                    <a href="{% url 'update' task.task %}" class="btn btn-sm btn-outline-warning">Update</a>
+                    <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-outline-info">Comment</a>
                     {% else %}
-                        <button onclick="showPermissionModal()" class="btn btn-sm btn-warning">Update</button>
-                        <button onclick="showPermissionModal()" class="btn btn-sm btn-danger">Delete</button>
-                        <button onclick="showPermissionModal()" class="btn btn-sm btn-info">Comment</button>
+                        <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-warning">Update</button>
+                        <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-danger">Delete</button>
+                        <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-info">Comment</button>
                     {% endif %}
+                    </div>
                 </div>
             </div>
-{% endfor %}
         </div>
-        <a href="{% url 'create' %}" class="btn btn-sm btn-success">Create New Task</a>
+        {% endfor %}
+    </div>
+        <a href="{% url 'create' %}" class="btn btn-sm btn-light d-flex justify-content-center">Create New Task</a>
         
+    <div class="pagination justify-content-center mt-4">
+            <span class="step-links">
+                {% if tasks.has_previous %}
+                <a href="?page=1" class="btn btn-sm btn-outline-secondary">&laquo; first</a>
+                <a href="?page={{ tasks.previous_page_number }}" class="btn btn-sm btn-outline-secondary">previous</a>
+                {% endif %}
+    
+                <span class="current mx-2">
+                    Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}
+                </span>
+    
+                {% if tasks.has_next %}
+                <a href="?page={{ tasks.next_page_number }}" class="btn btn-sm btn-outline-secondary">next</a>
+                <a href="?page={{ tasks.paginator.num_pages }}" class="btn btn-sm btn-outline-secondary">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
         <!-- Bootstrap styled - Permission Modal -->
         <div class="modal-fade" id="permissionModal" tabindex="-1" aria-labelledby="permission-denied" style="display: none;">
             <div class="modal-dialog">
@@ -44,22 +75,4 @@
               </div>
             </div>
           </div>
-          <div class="pagination justify-content-center mt-4">
-            <span class="step-links">
-                {% if tasks.has_previous %}
-                    <a href="?page=1" class="btn btn-sm btn-outline-primary">&laquo; first</a>
-                    <a href="?page={{ tasks.previous_page_number }}" class="btn btn-sm btn-outline-primary">previous</a>
-                {% endif %}
-    
-                <span class="current mx-2">
-                    Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}
-                </span>
-    
-                {% if tasks.has_next %}
-                    <a href="?page={{ tasks.next_page_number }}" class="btn btn-sm btn-outline-primary">next</a>
-                    <a href="?page={{ tasks.paginator.num_pages }}" class="btn btn-sm btn-outline-primary">last &raquo;</a>
-                {% endif %}
-            </span>
-        </div>
-    </div>
 {% endblock %}

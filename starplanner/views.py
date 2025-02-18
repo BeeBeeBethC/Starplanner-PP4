@@ -47,7 +47,7 @@ def comments(request, task_id):
 @login_required
 def read_task(request):
     task_list = Task.objects.all()
-    paginator = Paginator(task_list, 2)
+    paginator = Paginator(task_list, 3)
     page_number = request.GET.get("page")
     tasks = paginator.get_page(page_number)
     return render(request, 'read_task.html', {"tasks": tasks})
