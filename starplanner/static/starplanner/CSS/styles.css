@@ -1,22 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
-
-* {
-    box-sizing: border-box;
-    background-color: white;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#body {
+body {
     font-family: "Radio Canada", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    margin-bottom: 80;
+    padding-bottom: 80px;
+    margin-bottom: 80px;
 }
 
 .header {
@@ -36,12 +25,6 @@
     text-align: center;
     background-image: linear-gradient(to right, #CEDCFF, #D3CBFA, #F4BAD6, #FFCDAD, #FFE5AD);
     z-index: 1000;
-}
-
-.navbar {
-    display: flex;
-    border: black solid 2px;
-    background-color: white;
 }
 
 .card {
@@ -69,7 +52,7 @@
     color: #888;
 }
 
-.modal-fade {
+.modal.fade {
     position: fixed;
     top: 0;
     left: 0;
