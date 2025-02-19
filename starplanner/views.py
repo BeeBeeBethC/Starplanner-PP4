@@ -82,7 +82,7 @@ def update_task(request, task_id):
 
 @login_required
 def delete_task(request, task_id):
-    task = get_object_or_404(Task, task=task_id, author=request.user)
+    task = get_object_or_404(Task, pk=task_id, author=request.user)
     if request.method == "POST":
         task.delete()
         return redirect('read')

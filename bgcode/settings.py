@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'starplanner',
-    # 'django-summernote',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
