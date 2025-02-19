@@ -20,7 +20,7 @@
                     <!--Custom CSS-->
     <link rel="stylesheet" href="{% static 'starplanner/CSS/styles.css' %}">
 </head>
-<body data-username="{{ request.user.username }}">
+<body data-username="{{ request.user.username }}" class="d-flex flex-column min-vh-100">
     <div class="header">
         <h1>Welcome to Starplanner!</h1>
         <p>Designed with <b>you</b> in mind!</p>
