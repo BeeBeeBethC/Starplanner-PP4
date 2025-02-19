@@ -20,9 +20,13 @@ def create_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            task = form.save(commit=False)
-            task.author = request.user
-            task.save()
+            try:
+                task = form.save(commit=False)
+                task.author = request.user
+                task.save()
+                messages.success(request, 'Task created successfully!')
+            except Exception as e:
+                messages.error(request, f'Error creating task: {str(e)}')
             Comment.objects.create(
                 task = task,
                 author = request.user,
@@ -46,11 +50,15 @@ def comments(request, task_id):
 
 @login_required
 def read_task(request):
-    task_list = Task.objects.all()
+    filter_user = request.GET.get('user', 'all')
+    if filter_user == 'mine':
+        task_list = Task.objects.filter(author=request.user)
+    else:
+        task_list = Task.objects.all()
     paginator = Paginator(task_list, 3)
     page_number = request.GET.get("page")
     tasks = paginator.get_page(page_number)
-    return render(request, 'read_task.html', {"tasks": tasks})
+    return render(request, 'read_task.html', {"tasks": tasks, "current_filter": filter_user})
 
 
 @login_required
