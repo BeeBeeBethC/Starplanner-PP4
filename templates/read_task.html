@@ -6,8 +6,8 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Tasks</h1>
             <div class="btn-group">
-                <a href="{% url 'read' %}?user=all" class="btn btn-outline-primary {% if current_filter != 'mine' %}active{% endif %}">All Tasks</a>
-                <a href="{% url 'read' %}?user=mine" class="btn btn-outline-primary {% if current_filter == 'mine' %}active{% endif %}">My Tasks</a>
+                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}" role="button">All Tasks</a>
+                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=mine  {% if current_filter == 'mine' %}active{% endif %}" role="button">My Tasks</a>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
@@ -31,9 +31,9 @@
                     </small>
                     <div class="mt-2">
                     {% if task.author == user %}
-                    <a href="{% url 'update' task.task %}" class="btn btn-sm btn-outline-warning">Update</a>
-                    <a href="{% url 'delete' task.task %}" class="btn btn-sm btn-outline-danger">Delete</a>
-                    <a href="{% url 'comment' task.task %}" class="btn btn-sm btn-outline-info">Comment</a>
+                    <a class="btn btn-sm btn-outline-warning" href="{% url 'update' task.task %}" role="button">Update</a>
+                    <a class="btn btn-sm btn-outline-danger" href="{% url 'delete' task.task %}" role="button">Delete</a>
+                    <a class="btn btn-sm btn-outline-info" href="{% url 'comment' task.task %}" role="button">Comment</a>
                     {% else %}
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-warning">Update</button>
                         <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-danger">Delete</button>
@@ -45,13 +45,13 @@
         </div>
         {% endfor %}
     </div>
-        <a href="{% url 'create' %}" class="btn btn-sm btn-light d-flex justify-content-center">Create New Task</a>
+        <a class="btn btn-sm btn-light d-flex justify-content-center" href="{% url 'create' %}" role="button">Create New Task</a>
         
     <div class="pagination justify-content-center mt-4">
             <span class="step-links">
                 {% if tasks.has_previous %}
-                <a href="?page=1" class="btn btn-sm btn-outline-secondary">&laquo; first</a>
-                <a href="?page={{ tasks.previous_page_number }}" class="btn btn-sm btn-outline-secondary">previous</a>
+                <a class="btn btn-sm btn-outline-secondary" href="?page=1" role="button">&laquo; first</a>
+                <a class="btn btn-sm btn-outline-secondary" href="?page={{ tasks.previous_page_number }}" role="button">previous</a>
                 {% endif %}
     
                 <span class="current mx-2">
@@ -59,8 +59,8 @@
                 </span>
     
                 {% if tasks.has_next %}
-                <a href="?page={{ tasks.next_page_number }}" class="btn btn-sm btn-outline-secondary">next</a>
-                <a href="?page={{ tasks.paginator.num_pages }}" class="btn btn-sm btn-outline-secondary">last &raquo;</a>
+                <a class="btn btn-sm btn-outline-secondary" href="?page={{ tasks.next_page_number }}" role="button">next</a>
+                <a class="btn btn-sm btn-outline-secondary" href="?page={{ tasks.paginator.num_pages }}" role="button">last &raquo;</a>
                 {% endif %}
             </span>
         </div>

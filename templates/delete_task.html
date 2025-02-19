@@ -14,8 +14,8 @@ Delete Tasks
 
     <form method="POST">
         {% csrf_token %}
-        <button type="submit">Delete Task</button>
+        <button type="submit" class="btn btn-outline-dark">Delete Task</button>
     </form>
-    <a href="{% url 'read' %}">Back</a>
+    <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
 </body>
 {% endblock %}
