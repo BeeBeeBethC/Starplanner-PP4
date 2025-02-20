@@ -1,3 +1,4 @@
+'EPIC' <EPIC>
 ---
 name: User Story
 about: This is a User Story Template
