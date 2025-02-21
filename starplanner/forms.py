@@ -43,8 +43,8 @@ class TaskForm(ModelForm):
         priority = cleaned_data.get('priority')
         description = cleaned_data.get('description')
 
-        if priority == 'high' and (not description or len(description) < 20):
-            raise forms.ValidationError("High priority tasks must have a detailed description (at least 20 characters)")
+        if priority == 'high' and (not description or len(description) < 50):
+            raise forms.ValidationError("High priority tasks must have a detailed description (at least 50 characters)")
 
         return cleaned_data
 

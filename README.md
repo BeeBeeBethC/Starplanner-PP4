@@ -48,37 +48,28 @@ please note: some of the following screenshots were taken during the project and
 future implementations: other companies can use it
 
 
-## Technologies and libraries used in CEDAS
+## Technologies and libraries used in Starplanner
 * Gitpod - coding workspace
 * Github - storage and commit history
-* Heroku - hosting platform for CEDAS
+* Heroku - hosting platform for Starplanner
 * Replit - used to aid with debugging.
 
 ### Languages
 
-For this project, the only language required was python the author has also used compatible libraries that are outlined below. 
+Html, CSS, Javascript, Python and Django
 
-This is because our brief was to create a Command - Line - Interface (CLI) application that users can interact with by typing commands or specifics into a terminal or console interface.
+### Libraries used 
 
-### Google Sheets and Libraries used 
-Google sheets was used for generating the API or database that directly corresponds to CEDAS
-
-Gspread is used as a Python API to interact with Google Sheets. It is a Python library that enables Python to communicate and retrieve requests directly with an external API straight to the console or terminal output.
-
-PrettyTable was used to generate the table of outcomes as shown in several screenshots in this readme as well as in the actual terminal when using the application.
-
-Datetime was used to generate and add dates to the Google sheet API using the gspread library to add dates to existing data in the spreadsheet.
+Bootstrap - for aid with styling and keeping consistency throughout
+Crispy Forms - for aid with form styling and form validation
 
 ## Data Models
 
-![data-model](/documentation-images/flowchart.png)
-
-This was the initial data model I had drawn up. 
-
-Over the duration of the project this changed slightly as the project began to evolve and grow. To outline a major change from this data model. The 'surplus' sheet has been removed so the programme just works with sales and stock worksheets. Whilst still calculating, updating and retrieving corresponding data correctly.
+INSERT ERD HERE
 
 ## Testing
-For testing documentation, see TESTING.md file. 
+
+Full testing documentation can be viewed in the TESTING.md file. 
 
 ## Deployment Instructions
 
