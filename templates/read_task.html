@@ -43,9 +43,7 @@
             </div>
         </div>
         {% endfor %}
-    </div>
-        <a class="btn btn-sm btn-outline-dark col-md-8 mt-3 offset-md-2 text-center mb-4" href="{% url 'create' %}" role="button">Create New Task</a>
-        
+    <a class="btn btn-sm btn-outline-dark col-md-8 mt-3 offset-md-2 text-center mb-4" href="{% url 'create' %}" role="button">Create New Task</a>
     <div class="pagination justify-content-center mt-4">
             <span class="step-links">
                 {% if tasks.has_previous %}
@@ -70,13 +68,12 @@
                 <div class="modal-header">
                   <h1 class="modal-title fs-5" id="permissionModalLabel">Permission Denied</h1>
                 </div>
-                <div class="modal-body">
-                    <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-dark" onclick="closePermissionModal()">Close</button>
-                </div>
-              </div>
+            <div class="modal-body">
+                <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
             </div>
+            <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-dark" onclick="closePermissionModal()">Close</button>
+            </div>
+          </div>
         </div>
 {% endblock %}
