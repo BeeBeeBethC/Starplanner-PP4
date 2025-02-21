@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import Task, Comment
 
+
 class TaskViewsTest(TestCase):
     def setUp(self):
         self.client = Client()
