@@ -11,7 +11,7 @@ class TaskForm(ModelForm):
         ('high', 'High')
     ]
 
-    priority = forms.ChoiceField(choices=PRIORITY_CHOICES, widget=forms.RadioSelect(attrs={'class':'form-control'}))
+    priority = forms.ChoiceField(choices=PRIORITY_CHOICES, widget=forms.RadioSelect(attrs={'class':'form.check'}))
 
     class Meta:
         model = Task
