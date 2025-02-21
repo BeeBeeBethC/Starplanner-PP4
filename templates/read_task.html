@@ -65,11 +65,11 @@
         </div>
     </div>
         <!-- Bootstrap styled - Permission Modal -->
-        <div class="modal-fade" id="permissionModal" tabindex="-1" aria-labelledby="permission-denied" style="display: none;">
+        <div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permissionModalLabel" style="display: none;">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5">Permission Denied</h1>
+                  <h1 class="modal-title fs-5" id="permissionModalLabel">Permission Denied</h1>
                 </div>
                 <div class="modal-body">
                     <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
@@ -80,4 +80,5 @@
               </div>
             </div>
           </div>
+        </div>
 {% endblock %}
