@@ -37,7 +37,7 @@ ALLOWED_HOSTS = [
 
 
 # Application definition
- 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -79,8 +79,7 @@ ROOT_URLCONF = 'bgcode.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
-            ],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -99,12 +98,12 @@ WSGI_APPLICATION = 'bgcode.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
-#}
+# }
 
 
 DATABASES = {
@@ -155,7 +154,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'starplanner/static/'), 
+    os.path.join(BASE_DIR, 'starplanner/static/'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'setupfiles')
@@ -169,4 +168,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'read'
 LOGOUT_REDIRECT_URL = 'starplanner'
-
