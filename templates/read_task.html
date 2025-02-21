@@ -6,7 +6,7 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Tasks</h1>
             <div class="btn-group btn-group-toggle">
-                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}" role="button" checked>All Tasks</a>
+                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}" role="button">All Tasks</a>
                 <a class="btn btn-outline-primary" href="{% url 'read' %}?user=mine  {% if current_filter == 'mine' %}active{% endif %}" role="button">My Tasks</a>
             </div>
         </div>
@@ -23,12 +23,11 @@
                         {{ task.priority|title }}
                     </span>
                 </div>
-                <div class="card-footer bg-light ">
-                    <small class="text-muted">
-                        <div>Posted by: {{ task.author }}</div>
-                        <div>Created: {{ task.created_on|date:"M d, Y" }}</div>
-                        <div>Updated: {{ task.updated_on|date:"M d, Y" }}</div>
-                    </small>
+                <div class="card-footer bg-light text-muted">
+                        <p>Posted by: {{ task.author }}</p>
+                        <p>Created: {{ task.created_on|date:"M d, Y" }}</p>
+                        <p>Updated: {{ task.updated_on|date:"M d, Y" }}</p>
+                </div>
                     <div class="mt-1">
                     {% if task.author == user %}
                     <a class="btn btn-sm btn-outline-warning" href="{% url 'update' task.task %}" role="button">Update</a>
