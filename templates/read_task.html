@@ -5,12 +5,12 @@
     <div class="container mt-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Tasks</h1>
-            <div class="btn-group">
-                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}" role="button">All Tasks</a>
+            <div class="btn-group btn-group-toggle">
+                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}" role="button" checked>All Tasks</a>
                 <a class="btn btn-outline-primary" href="{% url 'read' %}?user=mine  {% if current_filter == 'mine' %}active{% endif %}" role="button">My Tasks</a>
             </div>
         </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 shadow p-3 mb-5 bg-body-tertiary rounded">
         {% for task in tasks %}
         <div class="col">
             <div class="card h-100">
@@ -29,7 +29,7 @@
                         <div>Created: {{ task.created_on|date:"M d, Y" }}</div>
                         <div>Updated: {{ task.updated_on|date:"M d, Y" }}</div>
                     </small>
-                    <div class="mt-2">
+                    <div class="mt-1">
                     {% if task.author == user %}
                     <a class="btn btn-sm btn-outline-warning" href="{% url 'update' task.task %}" role="button">Update</a>
                     <a class="btn btn-sm btn-outline-danger" href="{% url 'delete' task.task %}" role="button">Delete</a>
@@ -45,7 +45,7 @@
         </div>
         {% endfor %}
     </div>
-        <a class="btn btn-sm btn-light d-flex justify-content-center" href="{% url 'create' %}" role="button">Create New Task</a>
+        <a class="btn btn-sm btn-outline-dark col-md-8 mt-3 offset-md-2 text-center mb-4" href="{% url 'create' %}" role="button">Create New Task</a>
         
     <div class="pagination justify-content-center mt-4">
             <span class="step-links">
