@@ -1,19 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% load static %}
-
-{% block title %}
-Create Task
-{% endblock %}
-
+{% block title %}Create Task{% endblock title %}
 {% block content %}
-<div class="login-form">
-    <h2>Create tasks for your day here!</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-outline-dark">Create Task</button>
-    </form>
-    <a href="{% url 'read' %}" class="btn btn-outline-dark">Back</a>
-</div>
-{% endblock %}
+    <div class="login-form">
+        <h2>Create tasks for your day here!</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-dark">Create Task</button>
+        </form>
+        <a href="{% url 'read' %}" class="btn btn-outline-dark">Back</a>
+    </div>
+{% endblock content %}

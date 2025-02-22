@@ -1,18 +1,23 @@
 console.log('Custom JavaScript is loaded and working!');
 
-/* jshint esversion: 6 */
-function showPermissionModal() {
-    document.getElementById('permissionModal').style.display = 'block';
-}
+document.addEventListener('DOMContentLoaded', function () {
+    const modalElement = document.getElementById('permissionModal');
+    const modal = new bootstrap.Modal(modalElement, {
+        keyboard: true,
+        backdrop: 'static' // Ensure the backdrop is set correctly
+    });
 
-function closePermissionModal() {
-    document.getElementById('permissionModal').style.display = 'none';
-}
+    window.showPermissionModal = function () {
+        console.log("Opening modal...");
+        modal.show();
+    };
 
-// Close modal when clicking outside
-window.onclick = function(event) {
-    const modal = document.getElementById('permissionModal');
-    if (event.target == modal) {
-        modal.style.display = 'none';
-    }
-};
+    window.closePermissionModal = function () {
+        console.log("Closing modal...");
+        modal.hide();
+    };
+
+    modalElement.addEventListener('hidden.bs.modal', function () {
+        console.log("Modal is now hidden.");
+    });
+});

@@ -1,20 +1,14 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% load static %}
-
-
-{% block title %}
-Update Task
-{% endblock %}
-
+{% block title %}Update Task{% endblock title %}
 {% block content %}
-<body class="form-container">
-    <h2>Update Task</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-outline-dark">Update Task</button>
-    </form>
-    <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
-</body>
-{% endblock %}
+    <body class="form-container">
+        <h2>Update Task</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-outline-dark">Update Task</button>
+        </form>
+        <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
+    </body>
+{% endblock content %}

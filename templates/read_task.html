@@ -6,77 +6,112 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Tasks</h1>
             <div class="btn-group">
-                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}" role="button">All Tasks</a>
-                <a class="btn btn-outline-primary" href="{% url 'read' %}?user=mine  {% if current_filter == 'mine' %}active{% endif %}" role="button">My Tasks</a>
+                <a class="btn btn-outline-primary"
+                   href="{% url 'read' %}?user=all {% if current_filter != 'mine' %}active{% endif %}"
+                   role="button">All Tasks</a>
+                <a class="btn btn-outline-primary"
+                   href="{% url 'read' %}?user=mine  {% if current_filter == 'mine' %}active{% endif %}"
+                   role="button">My Tasks</a>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-        {% for task in tasks %}
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-header">
-                    <h2 class="card-title mb-0">{{ task.title }}</h2>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">{{ task.description }}</p>
-                    <span class="badge {% if task.priority == 'high' %}bg-danger{% elif task.priority == 'medium' %}bg-warning{% else %}bg-success{% endif %}">
-                        {{ task.priority|title }}
-                    </span>
-                </div>
-                <div class="card-footer bg-light ">
-                    <small class="text-muted">
-                        <div>Posted by: {{ task.author }}</div>
-                        <div>Created: {{ task.created_on|date:"M d, Y" }}</div>
-                        <div>Updated: {{ task.updated_on|date:"M d, Y" }}</div>
-                    </small>
-                    <div class="mt-2">
-                    {% if task.author == user %}
-                    <a class="btn btn-sm btn-outline-warning" href="{% url 'update' task.task %}" role="button">Update</a>
-                    <a class="btn btn-sm btn-outline-danger" href="{% url 'delete' task.task %}" role="button">Delete</a>
-                    <a class="btn btn-sm btn-outline-info" href="{% url 'comment' task.task %}" role="button">Comment</a>
-                    {% else %}
-                        <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-warning">Update</button>
-                        <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-danger">Delete</button>
-                        <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-info">Comment</button>
-                    {% endif %}
+            {% for task in tasks %}
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h2 class="card-title mb-0">{{ task.title }}</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ task.description }}</p>
+                            <span class="badge {% if task.priority == 'high' %}bg-danger{% elif task.priority == 'medium' %}bg-warning{% else %}bg-success{% endif %}">
+                                {{ task.priority|title }}
+                            </span>
+                        </div>
+                        <div class="card-footer bg-light ">
+                            <small class="text-muted">
+                                <div>Posted by: {{ task.author }}</div>
+                                <div>Created: {{ task.created_on|date:"M d, Y" }}</div>
+                                <div>Updated: {{ task.updated_on|date:"M d, Y" }}</div>
+                            </small>
+                            <div class="mt-2">
+                                {% if task.author == user %}
+                                    <a class="btn btn-sm btn-outline-warning"
+                                       href="{% url 'update' task.task %}"
+                                       role="button">Update</a>
+                                    <a class="btn btn-sm btn-outline-danger"
+                                       href="{% url 'delete' task.task %}"
+                                       role="button">Delete</a>
+                                    <a class="btn btn-sm btn-outline-info"
+                                       href="{% url 'comment' task.task %}"
+                                       role="button">Comment</a>
+                                {% else %}
+                                    <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-warning">Update</button>
+                                    <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-danger">Delete</button>
+                                    <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-info">Comment</button>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-        <a class="btn btn-sm btn-light d-flex justify-content-center" href="{% url 'create' %}" role="button">Create New Task</a>
-        
-    <div class="pagination justify-content-center mt-4">
-            <span class="step-links">
+    <a class="btn btn-sm btn-light d-flex justify-content-center"
+       href="{% url 'create' %}"
+       role="button">Create New Task</a>
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
                 {% if tasks.has_previous %}
-                <a class="btn btn-sm btn-outline-secondary" href="?page=1" role="button">&laquo; first</a>
-                <a class="btn btn-sm btn-outline-secondary" href="?page={{ tasks.previous_page_number }}" role="button">previous</a>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1" aria-label="First">« First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ tasks.previous_page_number }}"
+                           aria-label="Previous">‹ Previous</a>
+                    </li>
                 {% endif %}
-    
-                <span class="current mx-2">
-                    Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}
-                </span>
-    
+                <!-- Page Numbers -->
+                {% for num in tasks.paginator.page_range %}
+                    {% if num == tasks.number %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                    {% elif num > tasks.number|add:'-3' and num < tasks.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
                 {% if tasks.has_next %}
-                <a class="btn btn-sm btn-outline-secondary" href="?page={{ tasks.next_page_number }}" role="button">next</a>
-                <a class="btn btn-sm btn-outline-secondary" href="?page={{ tasks.paginator.num_pages }}" role="button">last &raquo;</a>
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ tasks.next_page_number }}"
+                           aria-label="Next">Next ›</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ tasks.paginator.num_pages }}" aria-label="Last">Last »</a>
+                    </li>
                 {% endif %}
-            </span>
-        </div>
-        <!-- Bootstrap styled - Permission Modal -->
-        <div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permissionModalLabel" style="display: none;">
-            <div class="modal-dialog">
-              <div class="modal-content">
+            </ul>
+        </nav>
+    </div>
+    <!-- Bootstrap styled - Permission Modal -->
+    <div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permission-denied" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="permissionModalLabel">Permission Denied</h1>
+                    <h1 class="modal-title fs-5">Permission Denied</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            <div class="modal-body">
-                <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
+                <div class="modal-body">
+                    <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-dark" onclick="closePermissionModal()">Close</button>
-            </div>
-          </div>
         </div>
-{% endblock %}
+    </div>
+{% endblock content %}
