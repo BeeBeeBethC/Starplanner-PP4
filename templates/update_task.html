@@ -2,13 +2,13 @@
 {% load static %}
 {% block title %}Update Task{% endblock title %}
 {% block content %}
-    <body class="form-container">
+    <div class="form-container">
         <h2>Update Task</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form }}
             <button type="submit" class="btn btn-outline-dark">Update Task</button>
         </form>
         <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
-    </body>
+    </div>
 {% endblock content %}

@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Delete Tasks{% endblock title %}
 {% block content %}
-    <body>
+    <div>
         <h1>Are you sure you want to delete this task?</h1>
         <p>Task: {{ task.task }} </p>
         <p>Description: {{ task.description }} </p>
@@ -11,5 +11,5 @@
             <button type="submit" class="btn btn-outline-dark">Delete Task</button>
         </form>
         <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
-    </body>
+    </div>
 {% endblock content %}

@@ -17,9 +17,9 @@ Full Manual Testing performed. results as shown
 
 | Website Feature | Expected Outcome | Testing Performed | Result | Pass or Fail |
 | :-------: | :-------------: | :-------: | :-------: | :-------: |
-|   |  |  |  |  |
-|   |  |  |  |  |
-|   |  |  |  |  |
+| burger icon | drops down revealing navbar | clicked the icon | burger icon opens dropdown | pass |
+| press 'Login' option on Navbar | login page displays status of logged in or not |  |  |  |
+| |  |  |  |  |
 |   |  |  |  |  |
 |   |  |  |  |  |
 |   |  |  |  |  |

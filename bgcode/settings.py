@@ -30,6 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    'localhost',
     '127.0.0.1',
     '.herokuapp.com',
     'starplanner-d7711dee4aa3.herokuapp.com'
