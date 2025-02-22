@@ -7,13 +7,13 @@ Create Task
 {% endblock %}
 
 {% block content %}
-<div class="container col-md-8 mt-3 offset-md-2 text-center mb-4 card p-4 shadow">
+<div class="login-form">
     <h2>Create tasks for your day here!</h2>
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-outline-dark">Create Task</button>
     </form>
-    <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
+    <a href="{% url 'read' %}" class="btn btn-outline-dark">Back</a>
 </div>
 {% endblock %}

@@ -8,20 +8,13 @@ Update Task
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h2>Update Task</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2 text-center mb-4 card p-4 shadow">
-            <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-outline-dark">Update Task</button>
-            </form>
-        <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
-        </div>
-    </div>
+<body class="form-container">
+    <h2>Update Task</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-dark">Update Task</button>
+    </form>
+    <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
+</body>
 {% endblock %}
