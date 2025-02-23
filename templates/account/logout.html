@@ -1,14 +1,14 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
 {% load i18n %}
-{% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block head_title %}{% trans "Sign Out" %}{% endblock head_title %}
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2 text-center mb-4 card p-4 shadow">
-            <h3>{% trans "Sign Out" %}</h3>
-            <p>{% trans 'Are you sure you want to sign out?' %}</p>
+            <h2>{% trans "Sign Out" %}</h2>
+            <p>{% trans "Are you sure you want to sign out?" %}</p>
         </div>
     </div>
     <div class="row">
@@ -18,9 +18,9 @@
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
-                <button class="btn btn-signup right btn-outline-dark" type="submit">{% trans 'Sign Out' %}</button>
+                <button class="btn btn-signup right btn-outline-dark" type="submit">{% trans "Sign Out" %}</button>
             </form>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}

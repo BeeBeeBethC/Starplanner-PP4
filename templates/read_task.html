@@ -49,42 +49,53 @@
             <div class="d-flex justify-content-center mt-4">
                 <nav aria-label="Page navigation">
                     <ul class="pagination">
+                        <!-- First and Previous Links -->
                         {% if tasks.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?page=1" aria-label="First">« First</a>
+                                <a class="page-link" href="?page=1" aria-label="First Page">« First</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link"
-                                   href="?page={{ tasks.previous_page_number }}"
-                                   aria-label="Previous">‹ Previous</a>
+                                <a class="page-link" href="?page={{ tasks.previous_page_number }}" aria-label="Previous Page">‹ Previous</a>
                             </li>
                         {% endif %}
+                
                         <!-- Page Numbers -->
                         {% for num in tasks.paginator.page_range %}
                             {% if num == tasks.number %}
-                                <li class="page-item active">
+                                <li class="page-item active" aria-current="page">
                                     <span class="page-link">{{ num }}</span>
                                 </li>
-                            {% elif num > tasks.number|add:'-3' and num < tasks.number|add:'3' %}
+                            {% elif num == 1 or num == tasks.paginator.num_pages or num == tasks.previous_page_number or num == tasks.next_page_number %}
                                 <li class="page-item">
                                     <a class="page-link" href="?page={{ num }}">{{ num }}</a>
                                 </li>
+                            {% elif num == tasks.number|add:-1 or num == tasks.number|add:1 %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                                </li>
+                            {% elif num == 2 and tasks.number > 4 %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
+                            {% elif num == tasks.paginator.num_pages|add:-1 and tasks.number < tasks.paginator.num_pages|add:-3 %}
+                                <li class="page-item disabled">
+                                    <span class="page-link">...</span>
+                                </li>
                             {% endif %}
                         {% endfor %}
+                
+                        <!-- Next and Last Links -->
                         {% if tasks.has_next %}
                             <li class="page-item">
-                                <a class="page-link"
-                                   href="?page={{ tasks.next_page_number }}"
-                                   aria-label="Next">Next ›</a>
+                                <a class="page-link" href="?page={{ tasks.next_page_number }}" aria-label="Next Page">Next ›</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link"
-                                   href="?page={{ tasks.paginator.num_pages }}"
-                                   aria-label="Last">Last »</a>
+                                <a class="page-link" href="?page={{ tasks.paginator.num_pages }}" aria-label="Last Page">Last »</a>
                             </li>
                         {% endif %}
                     </ul>
                 </nav>
+                
             </div>
             <!-- Bootstrap styled - Permission Modal -->
             <div class="modal text-bg-light p-3"
