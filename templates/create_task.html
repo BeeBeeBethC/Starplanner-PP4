@@ -1,13 +1,14 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% load static %}
 {% block title %}Create Task{% endblock title %}
 {% block content %}
-    <div class="login-form">
+    <div class="login-form col-md-8 mt-3 offset-md-2 mb-4 card p-4 shadow">
         <h2>Create tasks for your day here!</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form | crispy }}
             <button type="submit" class="btn btn-outline-dark">Create Task</button>
         </form>
         <a href="{% url 'read' %}" class="btn btn-outline-dark">Back</a>
