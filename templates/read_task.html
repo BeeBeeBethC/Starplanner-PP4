@@ -34,9 +34,9 @@
                                 <a class="btn btn-sm btn-outline-danger" href="{% url 'delete' task.task %}" role="button">Delete</a>
                                 <a class="btn btn-sm btn-outline-info" href="{% url 'comment' task.task %}" role="button">Comment</a>
                             {% else %}
-                                <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-warning">Update</button>
-                                <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-danger">Delete</button>
-                                <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-info">Comment</button>
+                                <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-warning trigger-permission-modal">Update</button>
+                                <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-danger trigger-permission-modal">Delete</button>
+                                <button onclick="showPermissionModal()" class="btn btn-sm btn-outline-info trigger-permission-modal">Comment</button>
                             {% endif %}
                         </div>
                     </div>
@@ -90,19 +90,18 @@
             <div class="modal fade"
                  id="permissionModal"
                  tabindex="-1"
-                 aria-labelledby="permissionModal"
-                 aria-hidden="true">
+                 aria-labelledby="permissionModalLabel">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5">Permission Denied</h1>
+                            <h1 class="modal-title fs-5" id="permissionModalLabel">Permission Denied</h1>
                             <button type="button"
                                     class="btn-close"
                                     data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <p>You don't have permission to modify this task. Only the Author can edit or delete it.</p>
+                            <p>You don't have permission to modify this task.</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>

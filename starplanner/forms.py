@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Field
+from crispy_forms.layout import Submit, Layout, Field, Fieldset
 from .models import Task, Comment
 
 
@@ -14,7 +14,7 @@ class TaskForm(ModelForm):
 
     priority = forms.ChoiceField(
         choices=PRIORITY_CHOICES,
-        widget=forms.RadioSelect(attrs={'class': 'form.check'})
+        widget=forms.RadioSelect()
     )
 
     class Meta:
@@ -33,11 +33,17 @@ class TaskForm(ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = 'post'
         self.helper.layout = Layout(
-            Field('title'),
-            Field('priority'),
-            Field('description'),
+            Fieldset(
+                "Task Information",
+                Field('title'),
+                Field('description'),
+            ),
+            Fieldset(
+                "Task Priority",
+                Field('priority'),
+            ),
+            Submit('submit', 'Save Task', css_class="btn btn-primary")
         )
-        self.helper.add_input(Submit('submit', 'Save Task'))
 
     def clean_description(self):
         description = self.cleaned_data['description']

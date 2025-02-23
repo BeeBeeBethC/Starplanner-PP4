@@ -1,14 +1,17 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% crispy TaskForm TaskForm.helper %}
+
 {% load static %}
 {% block title %}Update Task{% endblock title %}
 {% block content %}
-    <div class="form-container">
+    <div class="col-md-8 mt-3 offset-md-2 card p-4 shadow">
         <h2>Update Task</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form }}
+            {{ form | crispy }}
             <button type="submit" class="btn btn-outline-dark">Update Task</button>
         </form>
-        <a class="btn btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
+        <a class="btn btn-sm btn-outline-dark" href="{% url 'read' %}" role="button">Back</a>
     </div>
 {% endblock content %}
