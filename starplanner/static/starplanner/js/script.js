@@ -1,12 +1,15 @@
 console.log('Custom JavaScript is loaded and working!');
 
 function showPermissionModal() {
-    document.getElementById('permissionModal').style.display = 'block';
+    var myModal = new bootstrap.Modal(document.getElementById('permissionModal'));
+    myModal.show();
 }
 
 function closePermissionModal() {
-    document.getElementById('permissionModal').style.display = 'none';
+    var myModal = bootstrap.Modal.getInstance(document.getElementById('permissionModal'));
+    myModal.hide();
 }
+
 
 // Close modal when clicking outside
 window.onclick = function(event) {
