@@ -130,27 +130,54 @@ No known remaining bugs are left in this project.
 ![wave-testing-1](starplanner/static/starplanner/images/Picture43.png)
 ![wave-testing-2](starplanner/static/starplanner/images/Picture44.png)
 ![wave-testing-3](starplanner/static/starplanner/images/Picture45.png)
+![pagination-2](starplanner/static/starplanner/images/Picture63.png)
+The above alert on wave testing is due to pagination links going to the same location however the author made an executive decision to keep the pagination links that were causing alerts for aesthetic reasons. No errors were found and when removed, they didn't look right.
+
 ![wave-testing-4](starplanner/static/starplanner/images/Picture46.png)
 ![wave-testing-5](starplanner/static/starplanner/images/Picture47.png)
 ![wave-testing-6](starplanner/static/starplanner/images/Picture48.png)
 ![wave-testing-7](starplanner/static/starplanner/images/Picture49.png)
 ![wave-testing-8](starplanner/static/starplanner/images/Picture50.png)
 ![wave-testing-9](starplanner/static/starplanner/images/Picture51.png)
-![html-valid-6](starplanner/static/starplanner/images/Picture61.png)
-![html-valid-7](starplanner/static/starplanner/images/Picture62.png)
-![html-valid-6](starplanner/static/starplanner/images/Picture63.png)
-![html-valid-7](starplanner/static/starplanner/images/Picture64.png)
+![wave-testing-10](starplanner/static/starplanner/images/Picture18.png)
+![wave-testing-11](starplanner/static/starplanner/images/Picture19.png)
+
+the link above showing an alert is due to links going to the same place on the page as you can access these links either on the navbar or the page itself.
+
+![pagination-1](starplanner/static/starplanner/images/Picture61.png)
+![pagination-3](starplanner/static/starplanner/images/Picture64.png)
+
+This is the permissions modal which appears when users that aren't associated with the corresponding task are trying to edit, delete or access comments for that task.
+
+![example-comments-screen](starplanner/static/starplanner/images/Picture60.png)
+
+![permission-modal](starplanner/static/starplanner/images/Picture62.png)
 
 ## Lighthouse Scores
 
-INSERT SCREENSHOTS HERE
+Lighthouse scores for both desktop and mobile devices are as follows:
+
+Desktop Lighthouse Scores
+
+![desktop-lighthouse-scores](starplanner/static/starplanner/images/Picture70.png)
+
+Mobile Lighthouse Scores
+
+![mobile-lighthouse-scores](starplanner/static/starplanner/images/Picture72.png)
 
 ### Further Testing
 
-further testing was completed on:
+Further testing was completed on:
 
-* A huawei laptop
+* A Huawei Laptop
+* Samsung Galaxy A22
+
+As well as testing completed in browsers:
+
+* Chrome 
+* Microsoft Edge
+* FireFox Web Browser
 
 with no issues identified.
 
-Thank you for viewing the testing.md document for CEDAS.
+Thank you for viewing the TESTING.md document for Starplanner.

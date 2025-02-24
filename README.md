@@ -33,15 +33,26 @@ The aim of Starplanner is to provide a task management system that all users of 
 
 ## User Stories
 
-For Starplanner, Agile principles were used to track and monitor the progress of the project. user stories were documented as issues on GitHub. Agile also included the use of GitHub's Kanban project board. The MoSCoW technique used to prioritize tasks, features or requirements for a project split into four columns, Must-have, Should-have, Could-have and Won't-have more information on MoSCoW methodology can be found here: (https://www.techtarget.com/searchsoftwarequality/definition/MoSCoW-method)
+For Starplanner, Agile principles were used to track and monitor the progress of the project. user stories were documented as issues on GitHub. Agile also included the use of GitHub's Kanban project board. Full kanban project board and User Stories can be found [here](https://github.com/users/BeeBeeBethC/projects/10). The MoSCoW technique used to prioritize tasks, features or requirements for a project split into four columns, Must-have, Should-have, Could-have and Won't-have more information on MoSCoW methodology can be found [here](https://www.techtarget.com/searchsoftwarequality/definition/MoSCoW-method).
+
 
 ![kanban-board](starplanner/static/starplanner/images/Picture73.png)
 ![example-user-story](starplanner/static/starplanner/images/Picture74.png)
 
 ## Existing Features
 
-The Website includes the ability to register, login, logout, Create tasks, read tasks, update tasks and delete tasks. the website also adds comments automatically to track when tasks are created and updated. starplanner also has access restrictions, users must be registered to view tasks and can only update and delete their own.
+The Website includes the ability to register, login, logout, Create tasks, Read tasks, Update tasks and Delete tasks. (CRUD functionality) The website also adds comments automatically to track when tasks are created and updated. starplanner also has access restrictions, users must be registered to view tasks and can only update and delete their own.
 
+original form design
+![original-mock-form-design](starplanner/static/starplanner/images/Picture10.png)
+
+actual form design is much more cleaner and minimalist compared to the original design.
+![official-form-design](starplanner/static/starplanner/images/Picture56.png)
+
+![Desktop-wireframe](starplanner/static/starplanner/images/Picture79.png)
+![Mobile-wireframe](starplanner/static/starplanner/images/Picture80.png)
+
+![comments-added-by-programme](starplanner/static/starplanner/images/Picture60.png)
 ![color-options](starplanner/static/starplanner/images/Picture1.png)
 ![color-options-with-text](starplanner/static/starplanner/images/Picture2.png)
 ![color-contrast-checker-1](starplanner/static/starplanner/images/Picture3.png)
