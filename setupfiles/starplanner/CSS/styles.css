@@ -1,16 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:ital,wght@0,300..700;1,300..700&display=swap');
-
-* {
-    box-sizing: border-box;
-}
-
 body {
     font-family: "Radio Canada", serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
-    margin: 0;
+    padding-bottom: 80px;
+    margin-bottom: 80px;
 }
 
 .header {
@@ -20,55 +15,44 @@ body {
     color: black;
 }
 
-.navbar {
-    display: flex;
-    border: white solid 2px;
-    background-color: black;
-}
-
-.nav-item a {
-    color: white;
-    padding: 14px 20px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.nav-item a:hover {
-    background-color: whitesmoke;
-    color: black;
-}
-
-/* Column container */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-    flex: 30%;
-    background-color: whitesmoke;
-    padding: 20px;
-}
-
-.main {
-    flex: 70%;
-    border: black solid 3px;
-    background-color: whitesmoke;
-    padding: 20px;
-}
-
 .footer {
-    border: white solid 3px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     padding: 20px;
     color: black;
     text-align: center;
     background-image: linear-gradient(to right, #CEDCFF, #D3CBFA, #F4BAD6, #FFCDAD, #FFE5AD);
+    z-index: 1000;
 }
 
-/* sample css modal styling */
-.modal-fade {
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card-text {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.card-meta {
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -88,20 +72,4 @@ body {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
-}
-
-/* modal styling end */
-.btn-disabled {
-    pointer-events: none;
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-
-    .row,
-    .navbar {
-        flex-direction: column;
-    }
 }
