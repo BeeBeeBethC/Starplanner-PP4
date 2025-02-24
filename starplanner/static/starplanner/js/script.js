@@ -1,12 +1,16 @@
 console.log('Custom JavaScript is loaded and working!');
 
+/* jshint esversion: 6 */
+/* exported showPermissionModal, closePermissionModal */
+/* global bootstrap */
+
 function showPermissionModal() {
-    var myModal = new bootstrap.Modal(document.getElementById('permissionModal'));
+    const myModal = new bootstrap.Modal(document.getElementById('permissionModal'));
     myModal.show();
 }
 
 function closePermissionModal() {
-    var myModal = bootstrap.Modal.getInstance(document.getElementById('permissionModal'));
+    const myModal = bootstrap.Modal.getInstance(document.getElementById('permissionModal'));
     myModal.hide();
 }
 
@@ -14,7 +18,7 @@ function closePermissionModal() {
 // Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('permissionModal');
-    if (event.target == modal) {
+    if (event.target === modal) {
         modal.style.display = 'none';
     }
 };

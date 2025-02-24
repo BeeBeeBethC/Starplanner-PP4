@@ -33,7 +33,7 @@ Full Manual Testing performed. results as shown
 | delete task | delete button is clicked verification shows 'do you want to delete this task?' | clicked the delete button | delete validation showed | Pass |
 | clicked comments button | comments that are automatically input on creation and update | clicked the comments button | could see the comments that had been made | Pass |
 | clicked on someone else's task buttons (update, delete and comment buttons) | modal should show stating that the user doesnt have access to modify the task | clicked the update, delete and comments button | modal appeared, access denied | Pass |
-| priotiry shown | each priority category has a corresponding badge | clicked priority in create/update task modes | corresponding badge appeared (red, yellow and green badges) | Pass |
+| priority shown | each priority category has a corresponding badge | clicked priority in create/update task modes | corresponding badge appeared (red, yellow and green badges) | Pass |
 | page navigation buttons | each button changes what tasks display | clicked page buttons | tasks and numbers changed | Pass |
 | pressed logout on navbar  | sign out page shows asking if you want to sign out | clicked logout nav link | Logout page appeared | Pass |
 | pressed sign out button  | signs user out | clicked the sign out button | user signed out | Pass |
@@ -42,27 +42,104 @@ Full Manual Testing performed. results as shown
 
 ## Automatic Testing
 
-INSERT AUTOMATIC TESTING SCREEN SHOTS HERE
+![initial-automatic-testing](starplanner/static/starplanner/images/Picture14.png)
+![automatic-testing-part-2](starplanner/static/starplanner/images/Picture15.png)
+![automatic-testing-part-3](starplanner/static/starplanner/images/Picture16.png)
+![automatic-testing-part-4-extended-tests](starplanner/static/starplanner/images/Picture17.png)
+The results shown in the above screenshots show the initial automatic testing by running "python manage.py test". These tests cover the 'CRUD' (create, read, update, delete) functionality.
 
 ## PEP8 validation
 
-INSERT PEP8 VALIDATION SCREEN SHOTS HERE
+PEP8 validation using [CI Python Linter](https://pep8ci.herokuapp.com/) was conducted across the python files in the project, before and after screenshots were taken and have been included.
+![PEP8-Admin.py](starplanner/static/starplanner/images/Picture25.png)
+![PEP8-Apps.py](starplanner/static/starplanner/images/Picture26.png)
+![PEP8-Models.py](starplanner/static/starplanner/images/Picture27.png)
+![PEP8-Models.py-updated](starplanner/static/starplanner/images/Picture28.png)
+![PEP8-Forms.py](starplanner/static/starplanner/images/Picture77.png)
+![PEP8-Tests.py](starplanner/static/starplanner/images/Picture29.png)
+![PEP8-Tests.py-updated](starplanner/static/starplanner/images/Picture30.png)
+![PEP8-urls.py](starplanner/static/starplanner/images/Picture31.png)
+![PEP8-views.py](starplanner/static/starplanner/images/Picture78.png)
+
+## JShint validation
+
+![jshint](starplanner/static/starplanner/images/Picture75.png)
+![jshint-comments](starplanner/static/starplanner/images/Picture76.png)
+![javascript-modal](starplanner/static/starplanner/images/Picture62.png)
+comments to let JShint understand that the functions are called elsewhere in the project
+
+## CSS Validation
+![CSS-validated](starplanner/static/starplanner/images/Picture32.png)
+
+## HTML Validation
+Roman from Tutor support helped guide me through sections of the html validation.
+
+please note: In the pictures below, picture 34 was used to represent the remaining validation as there was sensitive information on the other screenshots taken. All HTML files validated successfully. 
+![html-validation-issues-1](starplanner/static/starplanner/images/Picture20.png)
+![html-validation-issues-2](starplanner/static/starplanner/images/Picture23.png)
+![html-valid-1](starplanner/static/starplanner/images/Picture34.png)
+![html-valid-2](starplanner/static/starplanner/images/Picture35.png)
+![html-validation-issues-3](starplanner/static/starplanner/images/Picture36.png)
+![html-valid-3](starplanner/static/starplanner/images/Picture34.png)
+![html-valid-4](starplanner/static/starplanner/images/Picture34.png)
+![html-valid-5](starplanner/static/starplanner/images/Picture34.png)
+![html-valid-6](starplanner/static/starplanner/images/Picture34.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture34.png)
+![html-valid-8](starplanner/static/starplanner/images/Picture34.png)
+
+## Manual Form Validation
+
+![html-valid-6](starplanner/static/starplanner/images/Picture52.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture53.png)
+![html-valid-6](starplanner/static/starplanner/images/Picture54.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture55.png)
+![html-valid-6](starplanner/static/starplanner/images/Picture56.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture57.png)
+![html-valid-6](starplanner/static/starplanner/images/Picture58.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture59.png)
 
 ## Bugs
 
-INSERT DOCUMENTED BUGS HERE
+1. css styles not linking
+
+![style-link-not-changed](starplanner/static/starplanner/images/Picture8.png)
+
+favicon refusing to show
+![html-valid-6](starplanner/static/starplanner/images/Picture65.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture66.png)
 
 ### Solved bugs
 
-TALK ABOUT HOW TO RESOLVE ABOVE BUGS HERE
+1. css styles not linking
+
+Due to the file name not being recognised, on adjustement, file path worked.
+
+![styles-redefined](starplanner/static/starplanner/images/Picture9.png)
+
+2. favicon not showing or being recognised
+
+![favicon-2](starplanner/static/starplanner/images/Picture68.png)
+![favicon-3](starplanner/static/starplanner/images/Picture67.png)
 
 ### Remaining Bugs
 
-ANY REMAINING BUGS? NOPE I DON'T THINK SO!
+No known remaining bugs are left in this project.
 
 ## Wave Testing
 
-INSERT SCREENSHOTS HERE
+![wave-testing-1](starplanner/static/starplanner/images/Picture43.png)
+![wave-testing-2](starplanner/static/starplanner/images/Picture44.png)
+![wave-testing-3](starplanner/static/starplanner/images/Picture45.png)
+![wave-testing-4](starplanner/static/starplanner/images/Picture46.png)
+![wave-testing-5](starplanner/static/starplanner/images/Picture47.png)
+![wave-testing-6](starplanner/static/starplanner/images/Picture48.png)
+![wave-testing-7](starplanner/static/starplanner/images/Picture49.png)
+![wave-testing-8](starplanner/static/starplanner/images/Picture50.png)
+![wave-testing-9](starplanner/static/starplanner/images/Picture51.png)
+![html-valid-6](starplanner/static/starplanner/images/Picture61.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture62.png)
+![html-valid-6](starplanner/static/starplanner/images/Picture63.png)
+![html-valid-7](starplanner/static/starplanner/images/Picture64.png)
 
 ## Lighthouse Scores
 
