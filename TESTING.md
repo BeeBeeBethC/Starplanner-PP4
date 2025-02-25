@@ -57,6 +57,7 @@ The results shown in the above screenshots show the initial automatic testing by
 ## PEP8 validation
 
 PEP8 validation using [CI Python Linter](https://pep8ci.herokuapp.com/) was conducted across the python files in the project, before and after screenshots were taken and have been included.
+
 ![PEP8-Admin.py](starplanner/static/starplanner/images/Picture25.png)
 ![PEP8-Apps.py](starplanner/static/starplanner/images/Picture26.png)
 ![PEP8-Models.py](starplanner/static/starplanner/images/Picture27.png)
