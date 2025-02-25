@@ -7,15 +7,15 @@
 * [What is MOTech](#what-is-MOTech)
     * [What-is-Starplanner?](#what-is-Starplanner)
     * [Why-use-Starplanner](#Why-use-Starplanner)
-* [User Stories]()
+* [User Stories](#user-stories)
 * [Existing Features](#existing-features)
     * [Future Implementations](#future-implementations)
-    * [Technologies and Libraries Used]()
-* [Data Model](#data-model)
+    * [Technologies and Libraries Used](#technologies-languages-and-libraries-used-in-starplanner)
+* [Data Model](#data-models)
 * [Testing](#testing)
-* [Deployment](#deployment)
-    * [Clone The Repository](#how-to-clone-the-repository)
-    * [How To Create A Fork](#how-to-fork-the-repository)
+* [Deployment](#deployment-instructions)
+    * [Clone The Repository](#github-clone)
+    * [How To Create A Fork](#github-fork)
     * [Deployment to Heroku](#heroku-deployment)
 * [Credits](#credits)
     * [Content](#credits)
@@ -100,7 +100,7 @@ The data model diagram above makes it easier to plan models for my website, incl
 
 ## Testing
 
-Full testing documentation can be viewed in the TESTING.md file. 
+Full testing documentation can be viewed in the [TESTING.md](https://github.com/BeeBeeBethC/Starplanner-PP4/blob/main/TESTING.md) file. 
 
 ## Deployment Instructions
 

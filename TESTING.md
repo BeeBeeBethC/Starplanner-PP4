@@ -5,11 +5,15 @@ This document has been produced due to the extensive testing conducted on this p
 # Contents
 * [Full Website Testing](#manual-testing)
 * [Automatic Website Testing](#automatic-testing)
-* [Validator Testing](#validator-testing)
-* [Debugging](#debugging)
-    * [Known bugs](#known-bugs)
-    * [Resolved Bugs](#resolved-bugs)
-    * [Existing Bugs](#existing-bugs)
+* [Validator Testing](#validators)
+    * [PEP8-Validation](#pep8-validation)
+    * [JavaScript-Validation](#jshint-validation)
+    * [CSS-Validation](#css-validation)
+    * [HTML-Validation](#html-validation)
+    * [Manual-Form-Validation](#manual-form-validation)
+* [Debugging](#bugs)
+    * [Solved Bugs](#solved-bugs)
+    * [Remaining Bugs](#remaining-bugs)
 * [Further Testing](#further-testing)
 
 
@@ -47,6 +51,8 @@ Full Manual Testing performed. results as shown
 ![automatic-testing-part-3](starplanner/static/starplanner/images/Picture16.png)
 ![automatic-testing-part-4-extended-tests](starplanner/static/starplanner/images/Picture17.png)
 The results shown in the above screenshots show the initial automatic testing by running "python manage.py test". These tests cover the 'CRUD' (create, read, update, delete) functionality.
+
+# Validators
 
 ## PEP8 validation
 
